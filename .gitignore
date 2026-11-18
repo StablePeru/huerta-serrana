@@ -1,0 +1,20 @@
+# Dependencias y herramientas locales (el sitio no las necesita para funcionar)
+node_modules/
+.npm/
+
+# Ficheros del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor (se comparte solo la configuración de extensiones recomendadas)
+.vscode/*
+!.vscode/extensions.json
+
+# Registros e informes temporales
+*.log
+.lighthouseci/
+
+# Nunca subir secretos ni datos personales
+.env
+.env.*

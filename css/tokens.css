@@ -1,0 +1,113 @@
+/* ==========================================================================
+   tokens.css · Sistema de diseño de Huerta Serrana
+   --------------------------------------------------------------------------
+   Único sitio del proyecto donde se escriben colores, tamaños y distancias.
+   El resto de hojas solo usa var(--...). Para cambiar un color de la web,
+   se cambia aquí y se propaga a todas las páginas.
+
+   Dos capas:
+   1. Paleta (--color-*): los colores de marca tal cual (Anexo C).
+   2. Roles (--ui-*): para qué se usa cada color. Los componentes usan
+      roles, así el modo oscuro solo redefine roles, no componentes.
+   ========================================================================== */
+
+:root {
+  /* ---- 1. Paleta de marca (Anexo C) ---------------------------------- */
+  --color-primario: #2f5d3a; /* Verde sierra */
+  --color-fondo: #faf6ec; /* Crema */
+  --color-acento: #b5532a; /* Tierra */
+  --color-texto: #1f2a22; /* Tinta */
+  --color-superficie: #e8e2d2; /* Arena */
+  --color-destacado: #f2b134; /* Miel: solo decorativo o con Tinta encima */
+  --color-apagado: #8a8f86; /* Gris musgo: NO apto para texto pequeño */
+  --color-blanco: #ffffff;
+
+  /* Colores auxiliares del modo oscuro (derivados de Tinta, ver doc 02) */
+  --color-noche: #1f2a22;
+  --color-noche-superficie: #2a382e;
+
+  /* ---- 2. Roles de color (modo claro) --------------------------------
+     Ratios WCAG calculados en docs/02-diseno-sistema-visual.md */
+  --ui-fondo: var(--color-fondo);
+  --ui-texto: var(--color-texto); /* 13,78:1 sobre Crema */
+  --ui-titulo: var(--color-primario); /* 7,08:1 sobre Crema */
+  --ui-enlace: var(--color-primario);
+  --ui-superficie: var(--color-superficie); /* Tinta encima: 11,50:1 */
+  --ui-borde: var(--color-apagado); /* Solo bordes (no texto): 3,06:1 */
+  --ui-foco: var(--color-acento); /* Contorno de foco: 4,59:1 sobre Crema, 3,83:1 sobre Arena */
+  --ui-boton-fondo: var(--color-primario);
+  --ui-boton-texto: var(--color-blanco); /* 7,64:1 */
+  --ui-boton2-fondo: var(--color-acento);
+  --ui-boton2-texto: var(--color-blanco); /* 4,96:1 */
+  --ui-destacado-fondo: var(--color-destacado);
+  --ui-destacado-texto: var(--color-texto); /* Tinta sobre Miel: 7,87:1 */
+  --ui-error: var(--color-acento);
+  --ui-sombra: rgb(31 42 34 / 0.15); /* Tinta al 15 % */
+
+  /* ---- 3. Tipografía: fuentes del sistema, sin descargas -------------- */
+  --fuente-texto: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fuente-titulos: Georgia, "Times New Roman", serif;
+
+  /* Escala modular 1,25 (tercera mayor) sobre 1rem = 16 px por defecto.
+     En rem para respetar el tamaño de letra que elija cada persona. */
+  --tam-xs: 0.8rem; /* 12,8 px: solo etiquetas en mayúsculas, nunca párrafos */
+  --tam-sm: 0.875rem; /* 14 px */
+  --tam-base: 1rem; /* 16 px: cuerpo de texto */
+  --tam-md: 1.25rem; /* 20 px: h3 */
+  --tam-lg: 1.563rem; /* 25 px: h2 */
+  --tam-xl: 1.953rem; /* 31 px: h1 de páginas interiores */
+  --tam-hero: clamp(2rem, 1.4rem + 3vw, 3.052rem); /* h1 de portada, fluido */
+
+  --interlineado: 1.6;
+  --interlineado-titulo: 1.2;
+  --peso-normal: 400;
+  --peso-negrita: 700;
+
+  /* ---- 4. Espaciado: escala de 4 en 4 px expresada en rem ------------- */
+  --espacio-1: 0.25rem; /* 4 px */
+  --espacio-2: 0.5rem; /* 8 px */
+  --espacio-3: 0.75rem; /* 12 px */
+  --espacio-4: 1rem; /* 16 px: margen lateral en móvil */
+  --espacio-5: 1.5rem; /* 24 px */
+  --espacio-6: 2rem; /* 32 px */
+  --espacio-7: 3rem; /* 48 px: separación entre secciones */
+  --espacio-8: 4rem; /* 64 px */
+
+  /* ---- 5. Formas ------------------------------------------------------ */
+  --radio-sm: 0.25rem;
+  --radio-md: 0.5rem;
+  --radio-lg: 1rem;
+  --radio-pildora: 999px;
+  --borde-fino: 1px;
+  --borde-grueso: 3px; /* También el grosor del contorno de foco */
+  --sombra-tarjeta: 0 1px 3px var(--ui-sombra);
+
+  /* ---- 6. Maquetación ------------------------------------------------- */
+  --ancho-max: 72rem; /* 1152 px: contenedor en escritorio */
+  --ancho-lectura: 65ch; /* Línea de texto cómoda */
+  --tarjeta-min: 16rem; /* Ancho mínimo de tarjeta en la rejilla */
+  --objetivo-tactil: 2.75rem; /* 44 px: tamaño mínimo de botones y enlaces */
+  --duracion: 200ms;
+
+  /* Breakpoints (no pueden ser variables dentro de @media, se documentan):
+     48em = 768 px · 80em = 1280 px */
+}
+
+/* ---- Modo oscuro (RF10): solo se redefinen roles ------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ui-fondo: var(--color-noche);
+    --ui-texto: var(--color-fondo); /* Crema sobre Tinta: 13,78:1 */
+    --ui-titulo: var(--color-destacado); /* Miel sobre Tinta: 7,87:1 */
+    --ui-enlace: var(--color-destacado);
+    --ui-superficie: var(--color-noche-superficie); /* Crema encima: 11,42:1 */
+    --ui-borde: var(--color-apagado); /* 4,50:1 sobre Tinta */
+    --ui-foco: var(--color-destacado);
+    --ui-boton-fondo: var(--color-destacado);
+    --ui-boton-texto: var(--color-texto); /* Tinta sobre Miel: 7,87:1 */
+    --ui-boton2-fondo: var(--color-superficie);
+    --ui-boton2-texto: var(--color-texto); /* Tinta sobre Arena: 11,50:1 */
+    --ui-error: var(--color-destacado);
+    --ui-sombra: rgb(0 0 0 / 0.4);
+  }
+}
