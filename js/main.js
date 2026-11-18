@@ -53,10 +53,9 @@ function anunciarResultadosFiltro() {
   const filtro = catalogo.querySelector(".filtro");
   const productos = [...catalogo.querySelectorAll(".catalogo__item")];
 
-  const estado = document.createElement("p");
-  estado.className = "filtro__estado";
-  estado.setAttribute("role", "status");
-  filtro.after(estado);
+  // El párrafo ya está en el HTML (vacío y con su altura reservada) para que
+  // rellenarlo no desplace las tarjetas (CLS, bug B07).
+  const estado = catalogo.querySelector(".filtro__estado");
 
   const contarVisibles = () => {
     const visibles = productos.filter((producto) => getComputedStyle(producto).display !== "none");

@@ -518,8 +518,10 @@ textarea.formulario__control {
   }
 }
 
-/* Contador del filtro: lo crea main.js (sin JS no existe) */
+/* Contador del filtro: main.js lo rellena (sin JS queda vacío). Altura
+   reservada de una línea para que al rellenarlo no se mueva nada (B07). */
 .filtro__estado {
+  min-height: calc(var(--tam-sm) * var(--interlineado));
   font-size: var(--tam-sm);
 }
 
