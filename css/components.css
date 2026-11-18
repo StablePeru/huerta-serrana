@@ -1,0 +1,480 @@
+/* ==========================================================================
+   components.css · Componentes reutilizables (BEM)
+   --------------------------------------------------------------------------
+   Un bloque por componente: .bloque, .bloque__elemento, .bloque--variante.
+   Solo usan roles (--ui-*) y escalas de tokens.css.
+   ========================================================================== */
+
+/* ---- Botón ------------------------------------------------------------
+   Llamada a la acción. Verde (principal) o Tierra (--secundario). */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--objetivo-tactil);
+  padding-inline: var(--espacio-5);
+  border: 0;
+  border-radius: var(--radio-sm);
+  background-color: var(--ui-boton-fondo);
+  color: var(--ui-boton-texto);
+  font-weight: var(--peso-negrita);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duracion);
+}
+
+/* Al pasar el ratón se oscurece a Tinta (en modo oscuro, se aclara a Crema). */
+.boton:hover {
+  background-color: var(--ui-texto);
+  color: var(--ui-fondo);
+}
+
+.boton--secundario {
+  background-color: var(--ui-boton2-fondo);
+  color: var(--ui-boton2-texto);
+}
+
+/* ---- Enlace con flecha ------------------------------------------------
+   Acción de menor peso que un botón: «Ver catálogo →». */
+.enlace-flecha {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  min-height: var(--objetivo-tactil);
+  font-weight: var(--peso-negrita);
+}
+
+.enlace-flecha::after {
+  content: "→";
+  transition: transform var(--duracion);
+}
+
+.enlace-flecha:hover::after {
+  transform: translateX(var(--espacio-1));
+}
+
+/* ---- Portada ----------------------------------------------------------
+   Titular, texto, acciones e ilustración lineal de la sierra. */
+.portada {
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.portada__titulo {
+  font-size: var(--tam-hero);
+}
+
+.portada__texto {
+  font-size: var(--tam-md);
+}
+
+.portada__acciones,
+.cestas__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-3) var(--espacio-5);
+}
+
+.portada__ilustracion {
+  width: 100%;
+}
+
+/* ---- Ilustración SVG en línea ------------------------------------------
+   Está en el HTML (no en un .svg aparte) para que sus colores salgan de los
+   tokens y cambien solos en modo oscuro. Es decorativa: aria-hidden. */
+.ilustracion__sol {
+  fill: var(--ui-destacado-fondo);
+}
+
+.ilustracion__linea {
+  fill: none;
+  stroke: var(--ui-titulo);
+  stroke-width: var(--borde-grueso);
+  stroke-linejoin: round;
+}
+
+.ilustracion__linea--fondo {
+  stroke: var(--ui-borde);
+  stroke-width: var(--borde-fino);
+}
+
+/* ---- Aviso de temporada -------------------------------------------------
+   Caja Arena con la franja de los 12 meses. */
+.aviso {
+  display: grid;
+  gap: var(--espacio-3);
+  padding: var(--espacio-5);
+  background-color: var(--ui-superficie);
+  border-radius: var(--radio-md);
+}
+
+.aviso__titulo {
+  font-size: var(--tam-md);
+}
+
+/* Franja de meses: decorativa (aria-hidden); el texto del aviso ya lo dice. */
+.meses {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 0;
+  list-style: none;
+  background-color: var(--ui-fondo);
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-sm);
+  overflow: hidden;
+}
+
+.meses__mes {
+  padding-block: var(--espacio-1);
+  font-size: var(--tam-sm);
+  text-align: center;
+  border-inline-end: var(--borde-fino) solid var(--ui-borde);
+}
+
+.meses__mes:last-child {
+  border-inline-end: 0;
+}
+
+/* Miel solo como fondo, con Tinta encima (7,87:1) */
+.meses__mes--actual {
+  background-color: var(--ui-destacado-fondo);
+  color: var(--ui-destacado-texto);
+  font-weight: var(--peso-negrita);
+}
+
+/* ---- Pasos de «Cómo funciona» -------------------------------------------
+   La lista ordenada ya numera para lectores de pantalla; el número grande
+   se dibuja con un contador CSS. */
+.pasos__lista {
+  counter-reset: paso;
+}
+
+.pasos__paso {
+  display: grid;
+  grid-template-columns: var(--espacio-6) 1fr; /* Ancho fijo: «1» y «2» miden distinto (B04) */
+  column-gap: var(--espacio-4);
+  counter-increment: paso;
+}
+
+.pasos__paso::before {
+  content: counter(paso);
+  grid-row: span 2;
+  color: var(--ui-titulo);
+  font-family: var(--fuente-titulos);
+  font-size: var(--tam-xl);
+  line-height: var(--interlineado-titulo);
+}
+
+.pasos__titulo {
+  font-size: var(--tam-md);
+}
+
+/* ---- Etiqueta de precio -------------------------------------------------
+   Tarjeta Arena con forma de etiqueta de mercado: el precio, grande y a la
+   derecha, es lo primero que se ve (objetivo O1). Se usa para cestas y
+   productos. Texto Tinta sobre Arena: 11,50:1; título Verde: 5,91:1. */
+.etiqueta {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: start;
+  gap: var(--espacio-2) var(--espacio-3);
+  height: 100%;
+  padding: var(--espacio-4) var(--espacio-4) var(--espacio-4) var(--espacio-6);
+  background-color: var(--ui-superficie);
+  border-radius: var(--radio-md);
+}
+
+/* El agujero de la etiqueta (decorativo) */
+.etiqueta::before {
+  content: "";
+  position: absolute;
+  top: var(--espacio-5);
+  left: var(--espacio-3);
+  width: var(--espacio-3);
+  height: var(--espacio-3);
+  background-color: var(--ui-fondo);
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-pildora);
+}
+
+.etiqueta__nombre {
+  font-size: var(--tam-md);
+}
+
+.etiqueta__precio {
+  font-family: var(--fuente-titulos);
+  font-size: var(--tam-lg);
+  font-weight: var(--peso-negrita);
+  line-height: var(--interlineado-titulo);
+  text-align: end;
+  white-space: nowrap;
+}
+
+.etiqueta__unidad {
+  display: block;
+  font-family: var(--fuente-texto);
+  font-size: var(--tam-sm);
+  font-weight: var(--peso-normal);
+}
+
+.etiqueta__datos {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--espacio-1) var(--espacio-3);
+  font-size: var(--tam-sm);
+}
+
+/* Píldora de alérgenos: solo aparece si el producto los tiene */
+.etiqueta__alergenos {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding-inline: var(--espacio-2);
+  border: var(--borde-fino) solid var(--ui-texto);
+  border-radius: var(--radio-pildora);
+  font-size: var(--tam-sm);
+}
+
+/* ---- Filtro por temporada -----------------------------------------------
+   Radios con aspecto de chips. El filtrado funciona SIN JavaScript gracias
+   a :has(): «si el catálogo tiene marcado el radio X, oculta las tarjetas
+   que no sean de X». Los productos de todo el año se ven en cada estación,
+   porque también están disponibles en ella. */
+.filtro__grupo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+  padding: 0;
+  border: 0;
+}
+
+.filtro__leyenda {
+  margin-block-end: var(--espacio-2);
+  padding: 0;
+  font-weight: var(--peso-negrita);
+}
+
+.filtro__opcion {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--objetivo-tactil);
+  padding-inline: var(--espacio-4);
+  background-color: var(--ui-fondo);
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-pildora);
+  cursor: pointer;
+}
+
+/* El radio real queda encima del chip, invisible pero usable con teclado */
+.filtro__radio {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.filtro__opcion:has(.filtro__radio:checked) {
+  background-color: var(--ui-boton-fondo);
+  border-color: var(--ui-boton-fondo);
+  color: var(--ui-boton-texto);
+  font-weight: var(--peso-negrita);
+}
+
+.filtro__opcion:has(.filtro__radio:focus-visible) {
+  outline: var(--borde-grueso) solid var(--ui-foco);
+  outline-offset: var(--borde-grueso);
+}
+
+.catalogo:has(.filtro__radio[value="primavera"]:checked)
+  .catalogo__item:not([data-temporada="primavera"], [data-temporada="todo-el-ano"]),
+.catalogo:has(.filtro__radio[value="verano"]:checked)
+  .catalogo__item:not([data-temporada="verano"], [data-temporada="todo-el-ano"]),
+.catalogo:has(.filtro__radio[value="otono"]:checked)
+  .catalogo__item:not([data-temporada="otono"], [data-temporada="todo-el-ano"]),
+.catalogo:has(.filtro__radio[value="todo-el-ano"]:checked)
+  .catalogo__item:not([data-temporada="todo-el-ano"]) {
+  display: none;
+}
+
+/* ---- Ficha de productor ------------------------------------------------ */
+.ficha {
+  display: grid;
+  align-content: start;
+  gap: var(--espacio-3);
+  padding: var(--espacio-5);
+  background-color: var(--ui-superficie);
+  border-radius: var(--radio-md);
+}
+
+.ficha__datos,
+.datos__lista {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--espacio-1) var(--espacio-3);
+}
+
+/* ---- Datos de la cooperativa (aside de Productores) -------------------- */
+.datos {
+  display: grid;
+  align-content: start;
+  gap: var(--espacio-3);
+  padding: var(--espacio-5);
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-md);
+}
+
+.datos__titulo {
+  font-size: var(--tam-md);
+}
+
+/* ---- Formulario de pedido (RF5) -----------------------------------------
+   Cada campo: etiqueta visible encima del control (nunca placeholder como
+   etiqueta). Bordes Gris musgo: 3,06:1, válido para componentes (≥ 3:1). */
+.formulario {
+  display: grid;
+  gap: var(--espacio-4);
+  max-width: var(--ancho-lectura);
+}
+
+.formulario__campo {
+  display: grid;
+  gap: var(--espacio-1);
+}
+
+.formulario__etiqueta {
+  font-weight: var(--peso-negrita);
+}
+
+.formulario__control {
+  width: 100%;
+  min-height: var(--objetivo-tactil);
+  padding: var(--espacio-2) var(--espacio-3);
+  background-color: var(--ui-fondo);
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-sm);
+}
+
+textarea.formulario__control {
+  resize: vertical;
+}
+
+/* Error solo después de que la persona haya tocado el campo (:user-invalid),
+   no al cargar la página. Borde más grueso: no depende solo del color. */
+.formulario__control:user-invalid {
+  border: var(--borde-grueso) solid var(--ui-error);
+}
+
+.formulario__campo--casilla {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  column-gap: var(--espacio-3);
+}
+
+.formulario__casilla {
+  width: var(--espacio-5);
+  height: var(--espacio-5);
+  margin: var(--espacio-1) 0 0;
+  accent-color: var(--ui-boton-fondo);
+}
+
+/* ---- Tabla comparativa (RF7) --------------------------------------------
+   La tabla sigue siendo tabla en móvil: se desliza dentro de su caja y la
+   página no hace scroll horizontal (B02). La caja recibe el foco
+   (tabindex="0") para poder deslizarla con las flechas del teclado. */
+.tabla-contenedor {
+  overflow-x: auto;
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-md);
+}
+
+.tabla-ayuda {
+  font-size: var(--tam-sm);
+}
+
+.tabla {
+  width: 100%;
+  min-width: var(--tabla-min);
+  border-collapse: collapse;
+  font-size: var(--tam-sm);
+}
+
+.tabla__titulo {
+  padding: var(--espacio-3);
+  font-weight: var(--peso-negrita);
+  text-align: start;
+}
+
+.tabla th,
+.tabla td {
+  padding: var(--espacio-3);
+  border-block-start: var(--borde-fino) solid var(--ui-borde);
+  text-align: start;
+  vertical-align: top;
+}
+
+.tabla thead th {
+  background-color: var(--ui-superficie);
+}
+
+/* Nombre de la cesta (cabecera de fila) */
+.tabla tbody th {
+  color: var(--ui-titulo);
+  font-family: var(--fuente-titulos);
+  font-weight: var(--peso-normal);
+}
+
+/* ---- Preguntas frecuentes (RF8) -----------------------------------------
+   details/summary: se abren con clic, Enter o espacio, sin JavaScript. */
+.pregunta {
+  border-block-end: var(--borde-fino) solid var(--ui-borde);
+}
+
+/* Anula la separación general de section > * + * entre preguntas seguidas */
+.pregunta + .pregunta {
+  margin-block-start: 0;
+}
+
+.pregunta__titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  min-height: var(--objetivo-tactil);
+  padding-block: var(--espacio-2);
+  font-weight: var(--peso-negrita);
+  list-style: none;
+  cursor: pointer;
+}
+
+.pregunta__titulo::-webkit-details-marker {
+  display: none;
+}
+
+.pregunta__titulo::after {
+  content: "+";
+  color: var(--ui-titulo);
+  font-size: var(--tam-lg);
+  line-height: var(--interlineado-titulo);
+}
+
+.pregunta[open] .pregunta__titulo::after {
+  content: "−";
+}
+
+.pregunta > p {
+  padding-block-end: var(--espacio-4);
+}
+
+/* ---- Contacto directo ------------------------------------------------- */
+.contacto__datos {
+  font-style: normal; /* address se ve en cursiva por defecto */
+}
+
+.pie__nota {
+  color: var(--ui-texto);
+  font-style: italic;
+}
