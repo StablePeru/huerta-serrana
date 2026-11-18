@@ -1,7 +1,6 @@
 # 05 · Informe de verificación
 
-> Informe en construcción. La checklist V01-V15 completa, con capturas, se
-> rellena en la fase D y tras el despliegue.
+> Sitio publicado: https://stableperu.github.io/huerta-serrana/
 
 ## Registro de bugs
 
@@ -14,6 +13,7 @@
 | B05 | 2026-11-18 | Todas | Baja | Lighthouse «Buenas prácticas» 96: error de consola 404 en `/favicon.ico`. | El navegador pide un favicon por defecto si la página no declara uno. | `img/favicon.svg` propio enlazado con `<link rel="icon">`. Buenas prácticas: 100. | Persona del equipo (olvido) |
 | B06 | 2026-11-18 | catalogo.html (impresión) | Baja | En papel se imprimía «Mostrando 12 de 12 productos». | El contador del filtro no estaba en la lista de elementos ocultos al imprimir. | Añadido `.filtro__estado` a la regla `@media print`. Comprobado con captura en modo print. | IA (fase D) |
 | B07 | 2026-11-18 | catalogo.html | Media | Lighthouse: CLS 0,02 (desplazamiento de diseño). | `main.js` insertaba el contador del filtro tras cargar y empujaba las tarjetas. | El párrafo va vacío en el HTML con `min-height` de una línea; JS solo lo rellena. CLS: 0. | IA (fase D) |
+| B08 | 2026-11-18 | contacto.html (publicada) | Alta | En GitHub Pages, Buenas prácticas baja a 77 (falla V11): `is-on-https` e `inspector-issues` por contenido mixto. En local no aparecía. | Chrome trata un formulario con `action="mailto:"` en una página HTTPS como envío inseguro. El servidor local era HTTP. | Se quita el `action`; el formulario solo se muestra con JavaScript y sin JS se muestra el correo. Primer intento con `hidden` + JS: CLS 0,332 y rendimiento 84 (falla V10). Solución final: script mínimo en el `<head>` que añade la clase `js` antes de pintar. Resultado: 100/100/100/100 y CLS 0. | Persona del equipo (decisión de arquitectura del formulario) |
 
 ## Medidas parciales (fase C, 2026-11-18, servidor local sin caché)
 

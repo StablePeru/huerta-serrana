@@ -59,7 +59,7 @@ Las hojas se cargan en este orden: de lo general (tokens) a lo particular
 | JavaScript solo como mejora progresiva | Todo el contenido está en el HTML. JS solo actualiza el aviso de temporada según la fecha, anuncia cuántos productos quedan al filtrar y compone un correo de pedido legible. Con JS desactivado la web funciona igual. |
 | Filtro del catálogo con CSS (`:has()`) | Funciona sin JavaScript. Los productos de «Todo el año» aparecen en cada estación porque también están disponibles en ella. |
 | Menú plegable con `details/summary` | Se abre sin JavaScript; en escritorio se muestra siempre gracias a `::details-content`. |
-| Pedido por correo (`mailto:`) | Sin servidor ni servicios de terceros que reciban datos personales. Limitación asumida (ver ADR, riesgo R5). |
+| Pedido por correo (`mailto:`) | Sin servidor ni servicios de terceros que reciban datos personales. Limitación asumida (ver ADR, riesgo R5). El formulario necesita JavaScript: un `action="mailto:"` en HTTPS es contenido mixto (bug B08). Sin JS se muestra el correo para escribir directamente. |
 | Tabla de cestas con desplazamiento propio en móvil | Mantiene la semántica de tabla para lectores de pantalla y la página no hace scroll horizontal. |
 | CSS sin minificar y comentado | La persona que lo mantendrá no tiene formación técnica; el sitio completo pesa 72 KB. |
 | Fuentes del sistema | Cero descargas y cero peticiones a terceros (privacidad, RGPD). |
@@ -94,7 +94,10 @@ Las hojas se cargan en este orden: de lo general (tokens) a lo particular
 
 ## Publicación
 
-URL del sitio publicado: *pendiente del despliegue en GitHub Pages*.
+- Sitio: https://stableperu.github.io/huerta-serrana/
+- Repositorio: https://github.com/StablePeru/huerta-serrana (rama `main` protegida:
+  los cambios entran por *pull request* desde una rama de trabajo).
+- Alojamiento: GitHub Pages, publicado desde la rama `main`.
 
 ## Pendiente de confirmar con el cliente
 
