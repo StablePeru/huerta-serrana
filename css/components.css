@@ -330,3 +330,53 @@
 .datos__titulo {
   font-size: var(--tam-md);
 }
+
+/* ---- Formulario de pedido (RF5) -----------------------------------------
+   Cada campo: etiqueta visible encima del control (nunca placeholder como
+   etiqueta). Bordes Gris musgo: 3,06:1, válido para componentes (≥ 3:1). */
+.formulario {
+  display: grid;
+  gap: var(--espacio-4);
+  max-width: var(--ancho-lectura);
+}
+
+.formulario__campo {
+  display: grid;
+  gap: var(--espacio-1);
+}
+
+.formulario__etiqueta {
+  font-weight: var(--peso-negrita);
+}
+
+.formulario__control {
+  width: 100%;
+  min-height: var(--objetivo-tactil);
+  padding: var(--espacio-2) var(--espacio-3);
+  background-color: var(--ui-fondo);
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-sm);
+}
+
+textarea.formulario__control {
+  resize: vertical;
+}
+
+/* Error solo después de que la persona haya tocado el campo (:user-invalid),
+   no al cargar la página. Borde más grueso: no depende solo del color. */
+.formulario__control:user-invalid {
+  border: var(--borde-grueso) solid var(--ui-error);
+}
+
+.formulario__campo--casilla {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  column-gap: var(--espacio-3);
+}
+
+.formulario__casilla {
+  width: var(--espacio-5);
+  height: var(--espacio-5);
+  margin: var(--espacio-1) 0 0;
+  accent-color: var(--ui-boton-fondo);
+}
