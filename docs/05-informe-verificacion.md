@@ -15,6 +15,55 @@
 | B07 | 2026-11-18 | catalogo.html | Media | Lighthouse: CLS 0,02 (desplazamiento de diseño). | `main.js` insertaba el contador del filtro tras cargar y empujaba las tarjetas. | El párrafo va vacío en el HTML con `min-height` de una línea; JS solo lo rellena. CLS: 0. | IA (fase D) |
 | B08 | 2026-11-18 | contacto.html (publicada) | Alta | En GitHub Pages, Buenas prácticas baja a 77 (falla V11): `is-on-https` e `inspector-issues` por contenido mixto. En local no aparecía. | Chrome trata un formulario con `action="mailto:"` en una página HTTPS como envío inseguro. El servidor local era HTTP. | Se quita el `action`; el formulario solo se muestra con JavaScript y sin JS se muestra el correo. Primer intento con `hidden` + JS: CLS 0,332 y rendimiento 84 (falla V10). Solución final: script mínimo en el `<head>` que añade la clase `js` antes de pintar. Resultado: 100/100/100/100 y CLS 0. | Persona del equipo (decisión de arquitectura del formulario) |
 
+## Checklist V01-V15 (Anexo D)
+
+Fecha: 2026-11-18. Medida sobre el sitio publicado
+(https://stableperu.github.io/huerta-serrana/, rama `main` tras B08), salvo
+V01, V13 y V14, que se miden sobre los ficheros del repositorio (son los mismos).
+
+| Id | Criterio | Umbral | Resultado en las 4 páginas | Evidencia | ¿Pasa? |
+|---|---|---|---|---|---|
+| V01 | Documento válido | 0 errores | 0 errores y 0 avisos en las 4 páginas. Las 4 hojas CSS: 0 errores. | Nu Html Checker 26.10.12 (el motor de validator.w3.org), con `--css` para las hojas | ✅ |
+| V02 | Un `h1`, sin saltar niveles | Cumple | 1 `h1` por página y ningún salto de nivel. | Auditoría estática del HTML (secuencia de encabezados) | ✅ |
+| V03 | Imágenes accesibles | 100 % | No hay ninguna `img`. El único gráfico es el SVG decorativo de la portada, con `aria-hidden="true"`, `width` y `height`. | Auditoría estática | ✅ (no aplica a `img`) |
+| V04 | Navegación por teclado | Todo alcanzable, foco visible | El primer <kbd>Tab</kbd> muestra «Saltar al contenido» en las 4 páginas. Paradas de tabulación a 1280 / 360 px: Inicio 12 / 9, Catálogo 9 / 6, Productores 8 / 5, Contacto 22 / 19. Todas con contorno visible, sin trampas de foco, y <kbd>Mayús</kbd>+<kbd>Tab</kbd> recorre el camino inverso. En móvil, los enlaces del menú se alcanzan tras abrir «Menú» con <kbd>Enter</kbd>. Los 5 radios del filtro son una sola parada y se recorren con las flechas, como manda HTML. | Recorrido automático con Playwright. Capturas `teclado-saltar-1280-oscuro.png` y `teclado-formulario-360-oscuro.png` | ✅ |
+| V05 | Contraste | ≥ 4,5:1 texto normal | Mínimo 7,08:1 en modo claro (enlaces y `h1` Verde sobre Crema) y 7,87:1 en oscuro (Miel sobre Noche). Detalle en la tabla siguiente. | Colores calculados del navegador y fórmula WCAG 2. Lighthouse «color-contrast» sin fallos | ✅ |
+| V06 | Formulario | Cumple | Contacto: 6 campos, todos con `label for`; `type` `email` y `tel`; `autocomplete` `name`, `email` y `tel`. Catálogo: radios dentro de su `label`, agrupados en `fieldset` con `legend`. | Auditoría estática | ✅ |
+| V07 | Sin scroll horizontal | Cumple | 0 px de desbordamiento a 360, 768 y 1280 px en las 4 páginas. | `scrollWidth − clientWidth` medido en el navegador. Capturas `inicio-1280`, `inicio-360-oscuro`, `contacto-360` | ✅ |
+| V08 | Peso total | ≤ 500 KB | 15,5-16,6 KB transferidos (41,3-46,9 KB sin comprimir). | Lighthouse 13.6, auditoría «total-byte-weight» | ✅ |
+| V09 | Peticiones | ≤ 15 | 7 por página. | Lighthouse, «network-requests» | ✅ |
+| V10 | Lighthouse rendimiento | ≥ 85 | 100 en las 4. | Lighthouse 13.6 móvil sobre la URL publicada | ✅ |
+| V11 | Lighthouse A11y / BP / SEO | ≥ 90 cada uno | 100 / 100 / 100 en las 4 (antes de B08, Contacto: Buenas prácticas 77). | Lighthouse 13.6 móvil | ✅ |
+| V12 | Sin terceros | 0 peticiones externas | 0. Las 7 peticiones van a `stableperu.github.io`. | Lighthouse, «network-requests» | ✅ |
+| V13 | Sistema de diseño | 0 valores sueltos | 0 colores y 0 espaciados fuera de `tokens.css`, 0 tamaños de letra en `px`. | Auditoría estática del CSS | ✅ |
+| V14 | Metodología | Cumple | 53 selectores BEM, 0 atributos `style`, 0 `!important`, 0 selectores de ID, 0 `float`. | Auditoría estática del CSS y del HTML | ✅ |
+| V15 | Historial | ≥ 15 commits | 43 commits (sin contar los merges), todos con prefijo convencional. | `git log --no-merges` | ✅ |
+
+### Contraste medido (V05)
+
+| Elemento | Modo claro | Modo oscuro |
+|---|---|---|
+| Texto de la portada | 13,78:1 | 13,78:1 |
+| Botón «Hacer un pedido» | 7,64:1 | 7,87:1 |
+| Enlace «Ver catálogo» | 7,08:1 | 7,87:1 |
+| Título `h1` | 7,08:1 | 7,87:1 |
+| Texto del aviso de temporada | 11,50:1 | 11,42:1 |
+| Precio de una etiqueta | 11,50:1 | 11,42:1 |
+| Contador del filtro | 13,78:1 | 13,78:1 |
+| Etiqueta de formulario | 13,78:1 | 13,78:1 |
+| Cabecera de la tabla | 11,50:1 | 11,42:1 |
+
+### Capturas que faltan (hay que hacerlas a mano en DevTools)
+
+El apartado 5.3 pide capturas de las herramientas del navegador. Los números
+de arriba están medidos, pero estas pantallas solo se pueden capturar desde
+DevTools:
+
+- [ ] Pestaña Network con la caché desactivada, una por página (peso y peticiones).
+- [ ] Selector de color del panel Elements mostrando el contraste de tres elementos.
+- [ ] Informe de Lighthouse en DevTools de al menos una página.
+- [ ] Prueba con lector de pantalla en Inicio y Contacto (apartado 5.4).
+
 ## Medidas parciales (fase C, 2026-11-18, servidor local sin caché)
 
 | Página | Lighthouse móvil (Rend. / A11y / BP / SEO) | Peso | W3C | Scroll a 360/768/1280 |
