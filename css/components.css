@@ -52,3 +52,49 @@
 .enlace-flecha:hover::after {
   transform: translateX(var(--espacio-1));
 }
+
+/* ---- Portada ----------------------------------------------------------
+   Titular, texto, acciones e ilustración lineal de la sierra. */
+.portada {
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.portada__titulo {
+  font-size: var(--tam-hero);
+}
+
+.portada__texto {
+  font-size: var(--tam-md);
+}
+
+.portada__acciones,
+.cestas__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-3) var(--espacio-5);
+}
+
+.portada__ilustracion {
+  width: 100%;
+}
+
+/* ---- Ilustración SVG en línea ------------------------------------------
+   Está en el HTML (no en un .svg aparte) para que sus colores salgan de los
+   tokens y cambien solos en modo oscuro. Es decorativa: aria-hidden. */
+.ilustracion__sol {
+  fill: var(--ui-destacado-fondo);
+}
+
+.ilustracion__linea {
+  fill: none;
+  stroke: var(--ui-titulo);
+  stroke-width: var(--borde-grueso);
+  stroke-linejoin: round;
+}
+
+.ilustracion__linea--fondo {
+  stroke: var(--ui-borde);
+  stroke-width: var(--borde-fino);
+}
