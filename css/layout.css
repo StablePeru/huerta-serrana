@@ -1,0 +1,185 @@
+/* ==========================================================================
+   layout.css · Estructura de la página (mobile-first)
+   --------------------------------------------------------------------------
+   Cabecera, menú, contenido principal, pie y rejillas de las listas.
+   Las reglas para pantallas grandes se añaden en la fase D (768 y 1280 px).
+   ========================================================================== */
+
+/* ---- Márgenes laterales sin contenedores extra -------------------------
+   En móvil, 16 px a cada lado. En pantallas anchas, el margen crece para que
+   el contenido no pase de --ancho-max y quede centrado. */
+.cabecera,
+main,
+.pie {
+  padding-inline: max(var(--espacio-4), calc((100% - var(--ancho-max)) / 2));
+}
+
+/* ---- Enlace «Saltar al contenido» (RF1) --------------------------------
+   Fuera de la pantalla hasta que recibe el foco con Tab. */
+.saltar {
+  position: absolute;
+  top: var(--espacio-2);
+  left: var(--espacio-2);
+  z-index: calc(var(--capa-menu) + 1);
+  padding: var(--espacio-2) var(--espacio-4);
+  background-color: var(--ui-boton-fondo);
+  color: var(--ui-boton-texto);
+  border-radius: var(--radio-sm);
+  transform: translateY(-200%);
+}
+
+.saltar:focus {
+  transform: none;
+}
+
+/* ---- Cabecera -------------------------------------------------------- */
+
+.cabecera {
+  position: relative; /* Referencia para el menú desplegable */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  padding-block: var(--espacio-3);
+  border-bottom: var(--borde-fino) solid var(--ui-borde);
+}
+
+.cabecera__logo {
+  font-family: var(--fuente-titulos);
+  font-size: var(--tam-md);
+  font-style: italic;
+  color: var(--ui-titulo);
+  text-decoration: none;
+}
+
+/* ---- Menú plegable sin JavaScript (details/summary) ------------------ */
+
+.menu__boton {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  min-height: var(--objetivo-tactil);
+  padding-inline: var(--espacio-4);
+  border: var(--borde-fino) solid var(--ui-enlace);
+  border-radius: var(--radio-sm);
+  color: var(--ui-enlace);
+  font-weight: var(--peso-negrita);
+  cursor: pointer;
+  list-style: none; /* Quita el triángulo por defecto */
+}
+
+.menu__boton::-webkit-details-marker {
+  display: none; /* Safari antiguo */
+}
+
+/* Flecha propia que gira al abrir el menú */
+.menu__boton::after {
+  content: "▾";
+  transition: transform var(--duracion);
+}
+
+.menu[open] .menu__boton::after {
+  transform: rotate(180deg);
+}
+
+/* El menú abierto ocupa todo el ancho bajo la cabecera */
+.menu__nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: var(--capa-menu);
+  padding: var(--espacio-2) var(--espacio-4) var(--espacio-4);
+  background-color: var(--ui-fondo);
+  border-bottom: var(--borde-fino) solid var(--ui-borde);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.menu__lista {
+  padding: 0;
+  list-style: none;
+}
+
+.menu__enlace {
+  display: flex;
+  align-items: center;
+  min-height: var(--objetivo-tactil);
+  color: var(--ui-texto);
+  text-decoration: none;
+}
+
+/* Página actual: negrita + subrayado Miel (decorativo; la negrita ya la distingue) */
+.menu__enlace[aria-current="page"] {
+  font-weight: var(--peso-negrita);
+  color: var(--ui-enlace);
+  text-decoration: underline;
+  text-decoration-color: var(--ui-destacado-fondo);
+  text-decoration-thickness: var(--borde-grueso);
+}
+
+/* ---- Contenido principal --------------------------------------------- */
+
+main {
+  padding-block: var(--espacio-6) var(--espacio-7);
+}
+
+/* Separación entre texto seguido dentro de main */
+main > * + * {
+  margin-block-start: var(--espacio-4);
+}
+
+/* Más aire entre los bloques grandes de la página */
+main > :is(section, aside, div) {
+  margin-block-start: var(--espacio-7);
+}
+
+/* Separación entre el título de cada sección y su contenido */
+section > * + * {
+  margin-block-start: var(--espacio-4);
+}
+
+/* ---- Rejillas de listas ------------------------------------------------
+   auto-fill + minmax: caben tantas columnas como permite el ancho, sin
+   media queries. En móvil sale una sola columna. */
+.pasos__lista,
+.cestas__lista,
+.catalogo__lista,
+.productores__fichas {
+  display: grid;
+  gap: var(--espacio-4);
+  padding: 0;
+  list-style: none;
+}
+
+.cestas__lista,
+.catalogo__lista {
+  grid-template-columns: repeat(auto-fill, minmax(var(--tarjeta-min), 1fr));
+}
+
+.productores {
+  display: grid;
+  gap: var(--espacio-6);
+}
+
+/* ---- Pie de página --------------------------------------------------- */
+
+.pie {
+  display: grid;
+  gap: var(--espacio-6);
+  padding-block: var(--espacio-6);
+  background-color: var(--ui-superficie);
+  border-top: var(--borde-fino) solid var(--ui-borde);
+  font-size: var(--tam-sm);
+}
+
+.pie__bloque > * + * {
+  margin-block-start: var(--espacio-3);
+}
+
+.pie__titulo {
+  font-size: var(--tam-md);
+}
+
+.pie__datos dd {
+  margin-block-end: var(--espacio-2);
+}
