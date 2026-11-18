@@ -98,3 +98,47 @@
   stroke: var(--ui-borde);
   stroke-width: var(--borde-fino);
 }
+
+/* ---- Aviso de temporada -------------------------------------------------
+   Caja Arena con la franja de los 12 meses. */
+.aviso {
+  display: grid;
+  gap: var(--espacio-3);
+  padding: var(--espacio-5);
+  background-color: var(--ui-superficie);
+  border-radius: var(--radio-md);
+}
+
+.aviso__titulo {
+  font-size: var(--tam-md);
+}
+
+/* Franja de meses: decorativa (aria-hidden); el texto del aviso ya lo dice. */
+.meses {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 0;
+  list-style: none;
+  background-color: var(--ui-fondo);
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-sm);
+  overflow: hidden;
+}
+
+.meses__mes {
+  padding-block: var(--espacio-1);
+  font-size: var(--tam-sm);
+  text-align: center;
+  border-inline-end: var(--borde-fino) solid var(--ui-borde);
+}
+
+.meses__mes:last-child {
+  border-inline-end: 0;
+}
+
+/* Miel solo como fondo, con Tinta encima (7,87:1) */
+.meses__mes--actual {
+  background-color: var(--ui-destacado-fondo);
+  color: var(--ui-destacado-texto);
+  font-weight: var(--peso-negrita);
+}
