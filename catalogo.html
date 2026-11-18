@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catálogo de temporada · Huerta Serrana</title>
+    <meta name="description" content="Los 12 productos de Huerta Serrana con precio, unidad, productor, temporada y alérgenos: verdura, fruta, queso, yogur, miel, pan y despensa.">
+    <link rel="stylesheet" href="css/tokens.css">
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+    <header class="cabecera">
+      <a class="cabecera__logo" href="index.html">Huerta Serrana</a>
+      <details class="menu">
+        <summary class="menu__boton">Menú</summary>
+        <nav class="menu__nav" aria-label="Principal">
+          <ul class="menu__lista">
+            <li><a class="menu__enlace" href="index.html">Inicio</a></li>
+            <li><a class="menu__enlace" href="catalogo.html" aria-current="page">Catálogo</a></li>
+            <li><a class="menu__enlace" href="productores.html">Productores</a></li>
+            <li><a class="menu__enlace" href="contacto.html">Contacto y pedido</a></li>
+          </ul>
+        </nav>
+      </details>
+    </header>
+
+    <main id="contenido" tabindex="-1">
+      <h1>Catálogo de temporada</h1>
+      <p>Los 12 productos de nuestros cuatro productores, con el precio por unidad de venta.</p>
+
+      <section class="catalogo" aria-labelledby="productos-titulo">
+        <h2 id="productos-titulo">Productos</h2>
+
+        <form class="filtro">
+          <fieldset class="filtro__grupo">
+            <legend class="filtro__leyenda">Filtrar por temporada</legend>
+            <label class="filtro__opcion"><input class="filtro__radio" type="radio" name="temporada" value="todas" checked> Todas</label>
+            <label class="filtro__opcion"><input class="filtro__radio" type="radio" name="temporada" value="primavera"> Primavera</label>
+            <label class="filtro__opcion"><input class="filtro__radio" type="radio" name="temporada" value="verano"> Verano</label>
+            <label class="filtro__opcion"><input class="filtro__radio" type="radio" name="temporada" value="otono"> Otoño</label>
+            <label class="filtro__opcion"><input class="filtro__radio" type="radio" name="temporada" value="todo-el-ano"> Todo el año</label>
+          </fieldset>
+        </form>
+
+        <ul class="catalogo__lista">
+          <li class="catalogo__item" data-temporada="verano">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Tomate rosa de la sierra</h3>
+              <p class="etiqueta__precio"><data value="3.90">3,90 €</data> <span class="etiqueta__unidad">kg</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Huerto Los Álamos</dd>
+                <dt>Temporada</dt><dd>Verano</dd>
+                <dt>Categoría</dt><dd>Verdura</dd>
+              </dl>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="otono">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Calabaza de invierno</h3>
+              <p class="etiqueta__precio"><data value="1.80">1,80 €</data> <span class="etiqueta__unidad">kg</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Huerto Los Álamos</dd>
+                <dt>Temporada</dt><dd>Otoño</dd>
+                <dt>Categoría</dt><dd>Verdura</dd>
+              </dl>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="verano">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Judías verdes</h3>
+              <p class="etiqueta__precio"><data value="4.20">4,20 €</data> <span class="etiqueta__unidad">kg</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Huerto Los Álamos</dd>
+                <dt>Temporada</dt><dd>Verano</dd>
+                <dt>Categoría</dt><dd>Verdura</dd>
+              </dl>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="otono">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Manzana reineta</h3>
+              <p class="etiqueta__precio"><data value="2.60">2,60 €</data> <span class="etiqueta__unidad">kg</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Huerto Los Álamos</dd>
+                <dt>Temporada</dt><dd>Otoño</dd>
+                <dt>Categoría</dt><dd>Fruta</dd>
+              </dl>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="todo-el-ano">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Queso curado de cabra</h3>
+              <p class="etiqueta__precio"><data value="18.50">18,50 €</data> <span class="etiqueta__unidad">kg</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Quesería La Peña</dd>
+                <dt>Temporada</dt><dd>Todo el año</dd>
+                <dt>Categoría</dt><dd>Lácteo</dd>
+              </dl>
+              <p class="etiqueta__alergenos">Alérgenos: leche</p>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="todo-el-ano">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Yogur natural de oveja</h3>
+              <p class="etiqueta__precio"><data value="2.10">2,10 €</data> <span class="etiqueta__unidad">unidad</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Quesería La Peña</dd>
+                <dt>Temporada</dt><dd>Todo el año</dd>
+                <dt>Categoría</dt><dd>Lácteo</dd>
+              </dl>
+              <p class="etiqueta__alergenos">Alérgenos: leche</p>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="primavera">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Miel de romero</h3>
+              <p class="etiqueta__precio"><data value="7.50">7,50 €</data> <span class="etiqueta__unidad">bote 500 g</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Apiarios del Jarama</dd>
+                <dt>Temporada</dt><dd>Primavera</dd>
+                <dt>Categoría</dt><dd>Despensa</dd>
+              </dl>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="verano">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Miel de brezo</h3>
+              <p class="etiqueta__precio"><data value="8.90">8,90 €</data> <span class="etiqueta__unidad">bote 500 g</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Apiarios del Jarama</dd>
+                <dt>Temporada</dt><dd>Verano</dd>
+                <dt>Categoría</dt><dd>Despensa</dd>
+              </dl>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="todo-el-ano">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Pan de centeno de masa madre</h3>
+              <p class="etiqueta__precio"><data value="3.40">3,40 €</data> <span class="etiqueta__unidad">hogaza</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Horno de Piedra</dd>
+                <dt>Temporada</dt><dd>Todo el año</dd>
+                <dt>Categoría</dt><dd>Panadería</dd>
+              </dl>
+              <p class="etiqueta__alergenos">Alérgenos: gluten</p>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="todo-el-ano">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Magdalenas de aceite de oliva</h3>
+              <p class="etiqueta__precio"><data value="3.95">3,95 €</data> <span class="etiqueta__unidad">caja 6 uds</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Horno de Piedra</dd>
+                <dt>Temporada</dt><dd>Todo el año</dd>
+                <dt>Categoría</dt><dd>Panadería</dd>
+              </dl>
+              <p class="etiqueta__alergenos">Alérgenos: gluten, huevo</p>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="todo-el-ano">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Huevos camperos</h3>
+              <p class="etiqueta__precio"><data value="3.20">3,20 €</data> <span class="etiqueta__unidad">docena</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Huerto Los Álamos</dd>
+                <dt>Temporada</dt><dd>Todo el año</dd>
+                <dt>Categoría</dt><dd>Despensa</dd>
+              </dl>
+              <p class="etiqueta__alergenos">Alérgenos: huevo</p>
+            </article>
+          </li>
+          <li class="catalogo__item" data-temporada="otono">
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Mermelada de higo</h3>
+              <p class="etiqueta__precio"><data value="4.80">4,80 €</data> <span class="etiqueta__unidad">bote 250 g</span></p>
+              <dl class="etiqueta__datos">
+                <dt>Productor</dt><dd>Horno de Piedra</dd>
+                <dt>Temporada</dt><dd>Otoño</dd>
+                <dt>Categoría</dt><dd>Despensa</dd>
+              </dl>
+            </article>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="pie">
+      <section class="pie__bloque" id="privacidad" aria-labelledby="privacidad-titulo">
+        <h2 class="pie__titulo" id="privacidad-titulo">Aviso legal y privacidad</h2>
+        <dl class="pie__datos">
+          <dt>Responsable</dt>
+          <dd>Huerta Serrana S. Coop.</dd>
+          <dt>Finalidad</dt>
+          <dd>Atender solicitudes de pedido o información.</dd>
+          <dt>Base jurídica</dt>
+          <dd>Consentimiento de la persona.</dd>
+          <dt>Conservación</dt>
+          <dd>Hasta resolver la solicitud y los plazos legales.</dd>
+          <dt>Derechos</dt>
+          <dd>Acceso, rectificación, supresión, oposición, limitación y portabilidad, escribiendo a pedidos@huertaserrana.example.</dd>
+        </dl>
+        <p>No se ceden datos a terceros ni se usan cookies.</p>
+      </section>
+      <section class="pie__bloque" aria-labelledby="pie-contacto-titulo">
+        <h2 class="pie__titulo" id="pie-contacto-titulo">Contacto</h2>
+        <p>
+          <a href="mailto:pedidos@huertaserrana.example">pedidos@huertaserrana.example</a><br>
+          <a href="tel:+34910000000">910 000 000</a>
+        </p>
+        <p class="pie__nota">Sitio ficticio creado para un caso práctico de Ingeniería Web I (UAX, 2026-27).</p>
+      </section>
+    </footer>
+  </body>
+</html>
