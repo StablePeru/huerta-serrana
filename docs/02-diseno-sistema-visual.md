@@ -132,8 +132,8 @@ porque CSS no permite `var()` dentro de `@media`.
 
 ## 4. Tabla de contraste
 
-Calculada con la fórmula WCAG 2.x (`docs/capturas/` guarda la comprobación
-cruzada con DevTools).
+Calculada con la fórmula WCAG 2.x. La comprobación medida en la web publicada
+está en `docs/05-informe-verificacion.md` (apartado V05).
 
 | Texto sobre fondo | Ratio | AA normal (≥ 4,5) | AA grande (≥ 3) | Decisión de uso |
 |---|---|---|---|---|
