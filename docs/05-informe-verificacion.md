@@ -76,3 +76,63 @@ llega a cargar, el formulario se ve pero no abre el correo. El correo de
 contacto sigue visible en «Contacto directo» y en el pie.
 
 Pendiente: repetir V08-V12 en un móvil real (apartado 6.1).
+
+## Análisis de huella (apartado 5.6)
+
+Medido el 2026-11-18 sobre el sitio publicado, con Lighthouse 13.6 en modo móvil
+(red simulada de 1,6 Mbit/s de bajada y 150 ms de latencia, CPU 4 veces más
+lenta). 1 KB = 1.024 bytes.
+
+### Peso total de cada página
+
+| Página | Recursos | Peso sin comprimir | Transferido | Tiempo de descarga de los datos* |
+|---|---|---|---|---|
+| index.html | 7 | 43,9 KB | 16,1 KB | 0,08 s |
+| catalogo.html | 7 | 46,9 KB | 15,9 KB | 0,08 s |
+| productores.html | 7 | 41,3 KB | 15,5 KB | 0,08 s |
+| contacto.html | 7 | 45,5 KB | 16,6 KB | 0,08 s |
+
+\* Solo el tiempo de bajar los bytes a 1,6 Mbit/s, sin latencia. El tiempo real
+hasta ver la página lo da el LCP: de 0,8 a 1,0 s con el mismo perfil.
+
+- GitHub Pages comprime con gzip: se transfiere un 64 % menos de lo que pesan los
+  ficheros. Por eso no minificamos: el código sigue legible para quien lo
+  mantenga y la compresión hace la mayor parte del trabajo.
+- Las 4 páginas comparten 6 ficheros (4 CSS, `main.js` y el favicon: 13,2 KB
+  transferidos). El servidor los marca con `Cache-Control: max-age=600`, así que
+  en los 10 minutos siguientes no se vuelven a descargar. Recorrer las 4 páginas
+  cuesta 24,3 KB en lugar de 64,1 KB.
+
+### Ahorro si el 10 % de las visitas fueran de móviles con conexión lenta
+
+No tenemos datos de tráfico del cliente. Calculamos sobre **1.000 visitas**, de
+las que **100** llegan desde un móvil con la conexión lenta descrita arriba, y
+contamos una página por visita, el caso más desfavorable para la caché.
+Comparamos nuestra página media (16,0 KB) con dos referencias medidas en este
+proyecto:
+
+| Referencia | Peso por página | Descarga a 1,6 Mbit/s | Ahorro por visita | Ahorro en 100 visitas lentas |
+|---|---|---|---|---|
+| Página en el límite del criterio V08 | 500 KB | 2,44 s | 484 KB y 2,4 s | 47,3 MB y 236 s de espera |
+| Versión del prompt vago (experimento 4.4) | 146,5 KB | 0,72 s | 130,5 KB y 0,6 s | 12,7 MB y 64 s de espera |
+
+Fórmula para aplicarla con las visitas reales:
+`ahorro = visitas × 0,10 × (peso de referencia − 16,0 KB)`.
+
+El peso de la versión vaga se midió en local y sin comprimir. Casi todo eran
+fuentes WOFF2, que ya van comprimidas, así que su transferencia sería parecida.
+
+### Relación con el desarrollo web sostenible (UD1)
+
+La UD1 (§6.2) presenta el desarrollo web sostenible como crear sitios
+eficientes en energía y recursos para reducir su huella ambiental. Cada byte que
+no viaja ahorra trabajo en el servidor, en la red y en la batería del móvil. Las
+decisiones del proyecto que lo consiguen son las mismas que la UD1 (§3) cita
+para el rendimiento: comprimir recursos, hacer pocas peticiones HTTP, usar
+imágenes ligeras (SVG en lugar de fotos) y servir desde una CDN. A eso se suman
+las fuentes del sistema y que no hay recursos de terceros. En la sierra, con
+cobertura irregular, esa diferencia también se nota en el tiempo de espera.
+
+No convertimos los bytes a gramos de CO₂: el resultado depende del modelo de
+cálculo y de su factor de energía por GB, y no hemos verificado ninguno. El dato
+que sí hemos medido es el volumen transferido.
