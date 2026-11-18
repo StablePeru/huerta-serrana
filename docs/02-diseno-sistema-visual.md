@@ -41,9 +41,9 @@ Navegación plana: las 4 páginas están en el menú de todas las páginas.
 
 | Página | h1 | h2 | h3 |
 |---|---|---|---|
-| Inicio | De la huerta a tu mesa en menos de 48 horas | Cómo funciona · Nuestras cestas · Temporada (aviso) | Cada paso · Cada cesta |
-| Catálogo | Catálogo de temporada | Filtrar por temporada · Productos | Nombre de cada producto |
-| Productores | Quiénes producen | (fichas) · Datos de la cooperativa (`aside`) | — (el nombre de cada productor es h2 dentro de su `article`) |
+| Inicio | De la huerta a tu mesa en menos de 48 horas | Temporada de otoño (`aside`) · Cómo funciona · Nuestras cestas | Cada paso · Cada cesta |
+| Catálogo | Catálogo de temporada | Productos (el filtro va dentro, como `fieldset` con `legend`) | Nombre de cada producto |
+| Productores | Quiénes producen | Una por productor (h2 dentro de su `article`) · La cooperativa en datos (`aside`) | — |
 | Contacto y pedido | Contacto y pedido | Solicita tu pedido · Compara las cestas · Preguntas frecuentes · Contacto directo | — |
 
 El pie (`footer`) de todas las páginas usa h2 «Aviso legal y privacidad».
@@ -176,8 +176,8 @@ capital y en la sierra los jueves y los sábados.
 **Cómo funciona (3 pasos):**
 
 1. **Elige.** Mira el catálogo de temporada o escoge una de nuestras tres cestas.
-2. **Pide con 48 horas de antelación.** Rellena el formulario de pedido y te
-   confirmamos por correo o teléfono.
+2. **Pide con 48 horas de antelación.** Rellena el formulario de pedido o
+   escríbenos a pedidos@huertaserrana.example.
 3. **Recibe.** Repartimos los jueves y los sábados en Madrid capital y en los
    municipios de la sierra.
 

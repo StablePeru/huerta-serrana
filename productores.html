@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Productores · Huerta Serrana</title>
+    <meta name="description" content="Los cuatro productores de Huerta Serrana: Huerto Los Álamos, Quesería La Peña, Apiarios del Jarama y Horno de Piedra, en la Sierra Norte de Madrid.">
+    <link rel="stylesheet" href="css/tokens.css">
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+    <header class="cabecera">
+      <a class="cabecera__logo" href="index.html">Huerta Serrana</a>
+      <details class="menu">
+        <summary class="menu__boton">Menú</summary>
+        <nav class="menu__nav" aria-label="Principal">
+          <ul class="menu__lista">
+            <li><a class="menu__enlace" href="index.html">Inicio</a></li>
+            <li><a class="menu__enlace" href="catalogo.html">Catálogo</a></li>
+            <li><a class="menu__enlace" href="productores.html" aria-current="page">Productores</a></li>
+            <li><a class="menu__enlace" href="contacto.html">Contacto y pedido</a></li>
+          </ul>
+        </nav>
+      </details>
+    </header>
+
+    <main id="contenido" tabindex="-1">
+      <h1>Quiénes producen</h1>
+      <p>Somos cuatro productores de la Sierra Norte de Madrid. Aquí tienes quién hace cada cosa y desde dónde.</p>
+
+      <div class="productores">
+        <div class="productores__fichas">
+          <article class="ficha">
+            <h2 class="ficha__nombre">Huerto Los Álamos</h2>
+            <dl class="ficha__datos">
+              <dt>Localidad</dt><dd>Buitrago del Lozoya</dd>
+              <dt>Especialidad</dt><dd>Hortalizas, fruta y huevos</dd>
+              <dt>Desde</dt><dd>2009</dd>
+            </dl>
+            <p class="ficha__descripcion">Finca familiar de 6 hectáreas con riego por goteo y certificación ecológica en trámite.</p>
+          </article>
+
+          <article class="ficha">
+            <h2 class="ficha__nombre">Quesería La Peña</h2>
+            <dl class="ficha__datos">
+              <dt>Localidad</dt><dd>Lozoyuela</dd>
+              <dt>Especialidad</dt><dd>Quesos y yogures</dd>
+              <dt>Desde</dt><dd>2014</dd>
+            </dl>
+            <p class="ficha__descripcion">Rebaño de 120 cabras y 80 ovejas.</p>
+          </article>
+
+          <article class="ficha">
+            <h2 class="ficha__nombre">Apiarios del Jarama</h2>
+            <dl class="ficha__datos">
+              <dt>Localidad</dt><dd>El Atazar</dd>
+              <dt>Especialidad</dt><dd>Miel</dd>
+              <dt>Desde</dt><dd>2011</dd>
+            </dl>
+            <p class="ficha__descripcion">Cuarenta colmenas trashumantes entre el romero de primavera y el brezo de verano.</p>
+          </article>
+
+          <article class="ficha">
+            <h2 class="ficha__nombre">Horno de Piedra</h2>
+            <dl class="ficha__datos">
+              <dt>Localidad</dt><dd>Torrelaguna</dd>
+              <dt>Especialidad</dt><dd>Pan y repostería</dd>
+              <dt>Desde</dt><dd>2017</dd>
+            </dl>
+            <p class="ficha__descripcion">Horno de leña con masa madre propia y harinas de molino local.</p>
+          </article>
+        </div>
+
+        <aside class="datos" aria-labelledby="datos-titulo">
+          <h2 class="datos__titulo" id="datos-titulo">La cooperativa en datos</h2>
+          <dl class="datos__lista">
+            <dt>Fundada</dt><dd>2018</dd>
+            <dt>Productores</dt><dd>4, de la Sierra Norte de Madrid</dd>
+            <dt>Reparto</dt><dd>Jueves y sábados, en Madrid capital y municipios de la sierra</dd>
+            <dt>Antelación</dt><dd>48 horas como mínimo</dd>
+            <dt>Envíos</dt><dd>No hacemos envíos a toda España</dd>
+          </dl>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="pie">
+      <section class="pie__bloque" id="privacidad" aria-labelledby="privacidad-titulo">
+        <h2 class="pie__titulo" id="privacidad-titulo">Aviso legal y privacidad</h2>
+        <dl class="pie__datos">
+          <dt>Responsable</dt>
+          <dd>Huerta Serrana S. Coop.</dd>
+          <dt>Finalidad</dt>
+          <dd>Atender solicitudes de pedido o información.</dd>
+          <dt>Base jurídica</dt>
+          <dd>Consentimiento de la persona.</dd>
+          <dt>Conservación</dt>
+          <dd>Hasta resolver la solicitud y los plazos legales.</dd>
+          <dt>Derechos</dt>
+          <dd>Acceso, rectificación, supresión, oposición, limitación y portabilidad, escribiendo a pedidos@huertaserrana.example.</dd>
+        </dl>
+        <p>No se ceden datos a terceros ni se usan cookies.</p>
+      </section>
+      <section class="pie__bloque" aria-labelledby="pie-contacto-titulo">
+        <h2 class="pie__titulo" id="pie-contacto-titulo">Contacto</h2>
+        <p>
+          <a href="mailto:pedidos@huertaserrana.example">pedidos@huertaserrana.example</a><br>
+          <a href="tel:+34910000000">910 000 000</a>
+        </p>
+        <p class="pie__nota">Sitio ficticio creado para un caso práctico de Ingeniería Web I (UAX, 2026-27).</p>
+      </section>
+    </footer>
+  </body>
+</html>
