@@ -522,3 +522,8 @@ textarea.formulario__control {
 .filtro__estado {
   font-size: var(--tam-sm);
 }
+
+/* Mensaje tras enviar: lo crea main.js */
+.formulario__aviso {
+  font-weight: var(--peso-negrita);
+}

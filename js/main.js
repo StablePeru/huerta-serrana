@@ -68,3 +68,43 @@ function anunciarResultadosFiltro() {
 }
 
 anunciarResultadosFiltro();
+
+/* ---- 3. Correo de pedido legible (contacto.html) -----------------------
+   Sin JS, el formulario se envía con action="mailto:" y el correo llega en
+   formato «nombre=Ana». Con JS se compone un correo con asunto y una línea
+   por dato. El evento submit solo se dispara si la validación nativa del
+   navegador (required, type="email") ha pasado. */
+function prepararCorreoPedido() {
+  const formulario = document.querySelector(".formulario");
+  if (!formulario) return;
+
+  const aviso = document.createElement("p");
+  aviso.className = "formulario__aviso";
+  aviso.setAttribute("role", "status");
+  formulario.after(aviso);
+
+  formulario.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+
+    const datos = new FormData(formulario);
+    const lineas = [
+      `Nombre: ${datos.get("nombre")}`,
+      `Correo: ${datos.get("correo")}`,
+      `Teléfono: ${datos.get("telefono") || "no indicado"}`,
+      `Pedido: ${datos.get("pedido")}`,
+      `Comentarios: ${datos.get("comentarios") || "ninguno"}`,
+      "Consentimiento de privacidad: aceptado",
+    ];
+
+    const destino = formulario.getAttribute("action"); // mailto:pedidos@huertaserrana.example
+    const asunto = encodeURIComponent(`Solicitud de pedido: ${datos.get("pedido")}`);
+    const cuerpo = encodeURIComponent(lineas.join("\n"));
+
+    window.location.href = `${destino}?subject=${asunto}&body=${cuerpo}`;
+
+    aviso.textContent =
+      "Hemos preparado el correo en tu programa de correo. Si no se ha abierto, escríbenos a pedidos@huertaserrana.example.";
+  });
+}
+
+prepararCorreoPedido();
