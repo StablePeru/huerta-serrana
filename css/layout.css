@@ -278,6 +278,7 @@ section > * + * {
   .saltar,
   .menu,
   .filtro,
+  .filtro__estado,
   .pie,
   .portada__acciones,
   .cestas__acciones,
