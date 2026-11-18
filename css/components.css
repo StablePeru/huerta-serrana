@@ -426,3 +426,55 @@ textarea.formulario__control {
   font-family: var(--fuente-titulos);
   font-weight: var(--peso-normal);
 }
+
+/* ---- Preguntas frecuentes (RF8) -----------------------------------------
+   details/summary: se abren con clic, Enter o espacio, sin JavaScript. */
+.pregunta {
+  border-block-end: var(--borde-fino) solid var(--ui-borde);
+}
+
+/* Anula la separación general de section > * + * entre preguntas seguidas */
+.pregunta + .pregunta {
+  margin-block-start: 0;
+}
+
+.pregunta__titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  min-height: var(--objetivo-tactil);
+  padding-block: var(--espacio-2);
+  font-weight: var(--peso-negrita);
+  list-style: none;
+  cursor: pointer;
+}
+
+.pregunta__titulo::-webkit-details-marker {
+  display: none;
+}
+
+.pregunta__titulo::after {
+  content: "+";
+  color: var(--ui-titulo);
+  font-size: var(--tam-lg);
+  line-height: var(--interlineado-titulo);
+}
+
+.pregunta[open] .pregunta__titulo::after {
+  content: "−";
+}
+
+.pregunta > p {
+  padding-block-end: var(--espacio-4);
+}
+
+/* ---- Contacto directo ------------------------------------------------- */
+.contacto__datos {
+  font-style: normal; /* address se ve en cursiva por defecto */
+}
+
+.pie__nota {
+  color: var(--ui-texto);
+  font-style: italic;
+}
