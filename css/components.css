@@ -478,3 +478,54 @@ textarea.formulario__control {
   color: var(--ui-texto);
   font-style: italic;
 }
+
+/* ==========================================================================
+   Adaptación de componentes (fase D)
+   ========================================================================== */
+
+@media (min-width: 48em) {
+  /* Portada en dos columnas: texto a la izquierda, sierra a la derecha.
+     La ilustración va primera en el HTML (arriba en móvil). */
+  .portada {
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+    column-gap: var(--espacio-7);
+  }
+
+  .portada > :not(.portada__ilustracion) {
+    grid-column: 1;
+  }
+
+  .portada__ilustracion {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+  }
+
+  /* Aviso de temporada: título, franja y textos en una cuadrícula */
+  .aviso {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: var(--espacio-6);
+  }
+
+  .aviso__texto {
+    grid-column: 1 / -1;
+  }
+
+  /* La tabla ya cabe: sobra la indicación de deslizar */
+  .tabla-ayuda {
+    display: none;
+  }
+}
+
+/* Contador del filtro: main.js lo rellena (sin JS queda vacío). Altura
+   reservada de una línea para que al rellenarlo no se mueva nada (B07). */
+.filtro__estado {
+  min-height: calc(var(--tam-sm) * var(--interlineado));
+  font-size: var(--tam-sm);
+}
+
+/* Mensaje tras enviar: lo crea main.js */
+.formulario__aviso {
+  font-weight: var(--peso-negrita);
+}

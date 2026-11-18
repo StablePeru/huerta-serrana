@@ -183,3 +183,128 @@ section > * + * {
 .pie__datos dd {
   margin-block-end: var(--espacio-2);
 }
+
+/* ==========================================================================
+   Adaptación a tableta y escritorio (fase D)
+   48em = 768 px · 80em = 1280 px. En em para que respeten el zoom de texto.
+   ========================================================================== */
+
+/* ---- Menú siempre visible desde 768 px ----------------------------------
+   El contenido de un <details> cerrado está oculto con content-visibility.
+   ::details-content permite mostrarlo sin abrirlo ni usar JavaScript.
+   @supports: si el navegador no lo entiende, se queda el botón «Menú». */
+@supports selector(::details-content) {
+  @media (min-width: 48em) {
+    .menu__boton {
+      display: none;
+    }
+
+    .menu::details-content {
+      content-visibility: visible;
+    }
+
+    .menu__nav {
+      position: static;
+      padding: 0;
+      background: none;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .menu__lista {
+      display: flex;
+      gap: var(--espacio-5);
+    }
+  }
+}
+
+/* ---- Rejillas de tableta (≥ 768 px) ------------------------------------ */
+@media (min-width: 48em) {
+  main {
+    padding-block: var(--espacio-7) var(--espacio-8);
+  }
+
+  main > :is(section, aside, div) {
+    margin-block-start: var(--espacio-8);
+  }
+
+  .pasos__lista,
+  .cestas__lista {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .productores__fichas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pie {
+    grid-template-columns: 2fr 1fr;
+    column-gap: var(--espacio-7);
+  }
+}
+
+/* ---- Escritorio (≥ 1280 px) --------------------------------------------
+   Productores: fichas a la izquierda y el aside de datos como columna
+   lateral que acompaña al desplazarse. */
+@media (min-width: 80em) {
+  .productores {
+    grid-template-columns: 1fr var(--ancho-aside);
+    align-items: start;
+  }
+
+  .datos {
+    position: sticky;
+    top: var(--espacio-5);
+  }
+}
+
+/* ==========================================================================
+   Impresión (RF9): catálogo en papel para el mercado
+   --------------------------------------------------------------------------
+   Igual que el modo oscuro, solo se redefinen roles: fondo blanco, texto
+   Tinta y sin fondos de color (ahorran tinta). Se ocultan la navegación,
+   el filtro y el pie; las etiquetas no se cortan entre páginas.
+   ========================================================================== */
+@media print {
+  :root {
+    --ui-fondo: var(--color-blanco);
+    --ui-texto: var(--color-texto);
+    --ui-titulo: var(--color-texto);
+    --ui-enlace: var(--color-texto);
+    --ui-superficie: var(--color-blanco);
+    --ui-borde: var(--color-texto);
+  }
+
+  .saltar,
+  .menu,
+  .filtro,
+  .filtro__estado,
+  .pie,
+  .portada__acciones,
+  .cestas__acciones,
+  .tabla-ayuda {
+    display: none;
+  }
+
+  .cabecera {
+    border: 0;
+  }
+
+  main {
+    padding-block: 0;
+  }
+
+  .catalogo__lista {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espacio-3);
+  }
+
+  .etiqueta {
+    border: var(--borde-fino) solid var(--ui-borde);
+    break-inside: avoid;
+  }
+
+  .etiqueta::before {
+    display: none;
+  }
+}
