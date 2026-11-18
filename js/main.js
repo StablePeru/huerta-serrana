@@ -68,14 +68,17 @@ function anunciarResultadosFiltro() {
 
 anunciarResultadosFiltro();
 
-/* ---- 3. Correo de pedido legible (contacto.html) -----------------------
-   Sin JS, el formulario se envía con action="mailto:" y el correo llega en
-   formato «nombre=Ana». Con JS se compone un correo con asunto y una línea
-   por dato. El evento submit solo se dispara si la validación nativa del
-   navegador (required, type="email") ha pasado. */
+/* ---- 3. Formulario de pedido (contacto.html) ---------------------------
+   Sin JS se ve un párrafo con el correo de la cooperativa y el formulario
+   está oculto por CSS. Un formulario con action="mailto:" en una página
+   HTTPS se marca como contenido mixto (bug B08), así que el formulario
+   depende de JS: al enviarlo, abrimos un correo con asunto y una línea por
+   dato. El evento submit solo se dispara si la validación
+   nativa del navegador (required, type="email") ha pasado. */
 function prepararCorreoPedido() {
   const formulario = document.querySelector(".formulario");
   if (!formulario) return;
+
 
   const aviso = document.createElement("p");
   aviso.className = "formulario__aviso";
@@ -95,7 +98,7 @@ function prepararCorreoPedido() {
       "Consentimiento de privacidad: aceptado",
     ];
 
-    const destino = formulario.getAttribute("action"); // mailto:pedidos@huertaserrana.example
+    const destino = `mailto:${formulario.dataset.destino}`; // data-destino del HTML
     const asunto = encodeURIComponent(`Solicitud de pedido: ${datos.get("pedido")}`);
     const cuerpo = encodeURIComponent(lineas.join("\n"));
 

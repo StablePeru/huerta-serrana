@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <script type="module" src="js/main.js"></script>
+    <!-- Marca que hay JavaScript antes de pintar: el CSS elige entre formulario y texto sin saltos (B08). -->
+    <script>document.documentElement.classList.add("js");</script>
   </head>
   <body>
     <a class="saltar" href="#contenido">Saltar al contenido</a>
@@ -47,12 +49,17 @@
 
       <section class="pedido" id="pedido" aria-labelledby="pedido-titulo">
         <h2 id="pedido-titulo">Solicita tu pedido</h2>
-        <p>
+        <!-- Sin JavaScript se ve este párrafo; con JavaScript, el formulario (bug B08). -->
+        <p data-sin-js>
+          Escríbenos a <a href="mailto:pedidos@huertaserrana.example">pedidos@huertaserrana.example</a>
+          con tu nombre, tu correo, la cesta o los productos que quieres y, si quieres, tu teléfono.
+        </p>
+        <p data-con-js>
           Al enviar se abrirá tu programa de correo con la solicitud lista para mandar a
           pedidos@huertaserrana.example. Los campos marcados como opcionales puedes dejarlos vacíos.
         </p>
 
-        <form class="formulario" action="mailto:pedidos@huertaserrana.example" method="post" enctype="text/plain">
+        <form class="formulario" method="post" data-destino="pedidos@huertaserrana.example">
           <p class="formulario__campo">
             <label class="formulario__etiqueta" for="nombre">Nombre</label>
             <input class="formulario__control" id="nombre" name="nombre" type="text" autocomplete="name" required>

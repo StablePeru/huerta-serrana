@@ -335,9 +335,28 @@
    Cada campo: etiqueta visible encima del control (nunca placeholder como
    etiqueta). Bordes Gris musgo: 3,06:1, válido para componentes (≥ 3:1). */
 .formulario {
-  display: grid;
   gap: var(--espacio-4);
   max-width: var(--ancho-lectura);
+}
+
+/* Sin JavaScript se ve el párrafo con el correo y no el formulario (B08:
+   action="mailto:" en HTTPS es contenido mixto). La clase .js la añade un
+   script en el <head> antes de pintar, así que no hay saltos (CLS). */
+.formulario,
+[data-con-js] {
+  display: none;
+}
+
+.js .formulario {
+  display: grid;
+}
+
+.js [data-con-js] {
+  display: block;
+}
+
+.js [data-sin-js] {
+  display: none;
 }
 
 .formulario__campo {
