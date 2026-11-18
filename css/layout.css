@@ -257,3 +257,53 @@ section > * + * {
     top: var(--espacio-5);
   }
 }
+
+/* ==========================================================================
+   Impresión (RF9): catálogo en papel para el mercado
+   --------------------------------------------------------------------------
+   Igual que el modo oscuro, solo se redefinen roles: fondo blanco, texto
+   Tinta y sin fondos de color (ahorran tinta). Se ocultan la navegación,
+   el filtro y el pie; las etiquetas no se cortan entre páginas.
+   ========================================================================== */
+@media print {
+  :root {
+    --ui-fondo: var(--color-blanco);
+    --ui-texto: var(--color-texto);
+    --ui-titulo: var(--color-texto);
+    --ui-enlace: var(--color-texto);
+    --ui-superficie: var(--color-blanco);
+    --ui-borde: var(--color-texto);
+  }
+
+  .saltar,
+  .menu,
+  .filtro,
+  .pie,
+  .portada__acciones,
+  .cestas__acciones,
+  .tabla-ayuda {
+    display: none;
+  }
+
+  .cabecera {
+    border: 0;
+  }
+
+  main {
+    padding-block: 0;
+  }
+
+  .catalogo__lista {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espacio-3);
+  }
+
+  .etiqueta {
+    border: var(--borde-fino) solid var(--ui-borde);
+    break-inside: avoid;
+  }
+
+  .etiqueta::before {
+    display: none;
+  }
+}
