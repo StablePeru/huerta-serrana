@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Huerta Serrana · De la huerta a tu mesa en menos de 48 horas</title>
+    <meta name="description" content="Cooperativa de cuatro productores de la Sierra Norte de Madrid. Verdura, fruta, queso, miel y pan de temporada con reparto los jueves y los sábados.">
+    <link rel="stylesheet" href="css/tokens.css">
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+    <header class="cabecera">
+      <a class="cabecera__logo" href="index.html">Huerta Serrana</a>
+      <details class="menu">
+        <summary class="menu__boton">Menú</summary>
+        <nav class="menu__nav" aria-label="Principal">
+          <ul class="menu__lista">
+            <li><a class="menu__enlace" href="index.html" aria-current="page">Inicio</a></li>
+            <li><a class="menu__enlace" href="catalogo.html">Catálogo</a></li>
+            <li><a class="menu__enlace" href="productores.html">Productores</a></li>
+            <li><a class="menu__enlace" href="contacto.html">Contacto y pedido</a></li>
+          </ul>
+        </nav>
+      </details>
+    </header>
+
+    <main id="contenido" tabindex="-1">
+      <section class="portada">
+        <h1 class="portada__titulo">De la huerta a tu mesa en menos de 48 horas</h1>
+        <p class="portada__texto">
+          Somos cuatro productores de la Sierra Norte de Madrid. Vendemos sin intermediarios
+          verdura, fruta, queso, miel y pan, y lo repartimos en Madrid capital y en la sierra
+          los jueves y los sábados.
+        </p>
+        <p class="portada__acciones">
+          <a class="boton" href="contacto.html#pedido">Hacer un pedido</a>
+          <a class="enlace-flecha" href="catalogo.html">Ver catálogo</a>
+        </p>
+      </section>
+
+      <aside class="aviso" aria-labelledby="aviso-titulo">
+        <h2 class="aviso__titulo" id="aviso-titulo">Temporada de otoño</h2>
+        <ol class="meses" aria-hidden="true">
+          <li class="meses__mes">E</li>
+          <li class="meses__mes">F</li>
+          <li class="meses__mes">M</li>
+          <li class="meses__mes">A</li>
+          <li class="meses__mes">M</li>
+          <li class="meses__mes">J</li>
+          <li class="meses__mes">J</li>
+          <li class="meses__mes">A</li>
+          <li class="meses__mes meses__mes--actual">S</li>
+          <li class="meses__mes meses__mes--actual">O</li>
+          <li class="meses__mes meses__mes--actual">N</li>
+          <li class="meses__mes">D</li>
+        </ol>
+        <p class="aviso__texto">
+          Ahora es temporada de calabaza de invierno, manzana reineta y mermelada de higo.
+        </p>
+        <p class="aviso__texto">
+          Todo el año: queso curado de cabra, yogur natural de oveja, pan de centeno de masa
+          madre, magdalenas de aceite de oliva y huevos camperos.
+        </p>
+      </aside>
+
+      <section class="pasos" aria-labelledby="pasos-titulo">
+        <h2 id="pasos-titulo">Cómo funciona</h2>
+        <ol class="pasos__lista">
+          <li class="pasos__paso">
+            <h3 class="pasos__titulo">Elige</h3>
+            <p>Mira el catálogo de temporada o escoge una de nuestras tres cestas.</p>
+          </li>
+          <li class="pasos__paso">
+            <h3 class="pasos__titulo">Pide con 48 horas de antelación</h3>
+            <p>Rellena el formulario de pedido o escríbenos a pedidos@huertaserrana.example.</p>
+          </li>
+          <li class="pasos__paso">
+            <h3 class="pasos__titulo">Recibe</h3>
+            <p>Repartimos los jueves y los sábados en Madrid capital y en los municipios de la sierra.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="cestas" aria-labelledby="cestas-titulo">
+        <h2 id="cestas-titulo">Nuestras cestas</h2>
+        <ul class="cestas__lista">
+          <li>
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Cesta Pareja</h3>
+              <p class="etiqueta__precio">
+                <data value="38">38 €</data> <span class="etiqueta__unidad">al mes</span>
+              </p>
+              <dl class="etiqueta__datos">
+                <dt>Personas</dt>
+                <dd>1-2</dd>
+                <dt>Entrega</dt>
+                <dd>Semanal</dd>
+                <dt>Contenido</dt>
+                <dd>Verdura y fruta de temporada, 1 pan, 1 huevos</dd>
+              </dl>
+            </article>
+          </li>
+          <li>
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Cesta Familia</h3>
+              <p class="etiqueta__precio">
+                <data value="62">62 €</data> <span class="etiqueta__unidad">al mes</span>
+              </p>
+              <dl class="etiqueta__datos">
+                <dt>Personas</dt>
+                <dd>3-4</dd>
+                <dt>Entrega</dt>
+                <dd>Semanal</dd>
+                <dt>Contenido</dt>
+                <dd>Verdura y fruta de temporada, 2 panes, 1 docena de huevos, 1 queso o yogures</dd>
+              </dl>
+            </article>
+          </li>
+          <li>
+            <article class="etiqueta">
+              <h3 class="etiqueta__nombre">Cesta Despensa</h3>
+              <p class="etiqueta__precio">
+                <data value="45">45 €</data> <span class="etiqueta__unidad">al mes</span>
+              </p>
+              <dl class="etiqueta__datos">
+                <dt>Personas</dt>
+                <dd>2-4</dd>
+                <dt>Entrega</dt>
+                <dd>Quincenal</dd>
+                <dt>Contenido</dt>
+                <dd>Miel, mermelada, queso curado, magdalenas y 1 pan</dd>
+              </dl>
+            </article>
+          </li>
+        </ul>
+        <p class="cestas__acciones">
+          <a class="enlace-flecha" href="contacto.html#comparar">Comparar las cestas</a>
+          <a class="enlace-flecha" href="contacto.html#pedido">Pedir una cesta</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="pie">
+      <section class="pie__bloque" id="privacidad" aria-labelledby="privacidad-titulo">
+        <h2 class="pie__titulo" id="privacidad-titulo">Aviso legal y privacidad</h2>
+        <dl class="pie__datos">
+          <dt>Responsable</dt>
+          <dd>Huerta Serrana S. Coop.</dd>
+          <dt>Finalidad</dt>
+          <dd>Atender solicitudes de pedido o información.</dd>
+          <dt>Base jurídica</dt>
+          <dd>Consentimiento de la persona.</dd>
+          <dt>Conservación</dt>
+          <dd>Hasta resolver la solicitud y los plazos legales.</dd>
+          <dt>Derechos</dt>
+          <dd>Acceso, rectificación, supresión, oposición, limitación y portabilidad, escribiendo a pedidos@huertaserrana.example.</dd>
+        </dl>
+        <p>No se ceden datos a terceros ni se usan cookies.</p>
+      </section>
+      <section class="pie__bloque" aria-labelledby="pie-contacto-titulo">
+        <h2 class="pie__titulo" id="pie-contacto-titulo">Contacto</h2>
+        <p>
+          <a href="mailto:pedidos@huertaserrana.example">pedidos@huertaserrana.example</a><br>
+          <a href="tel:+34910000000">910 000 000</a>
+        </p>
+        <p class="pie__nota">Sitio ficticio creado para un caso práctico de Ingeniería Web I (UAX, 2026-27).</p>
+      </section>
+    </footer>
+  </body>
+</html>
