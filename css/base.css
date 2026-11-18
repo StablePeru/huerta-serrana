@@ -1,0 +1,148 @@
+/* ==========================================================================
+   base.css · Reset y estilos de los elementos HTML
+   --------------------------------------------------------------------------
+   Aquí solo hay selectores de elemento (body, h1, a…), nunca clases.
+   Todos los valores vienen de tokens.css.
+   ========================================================================== */
+
+/* ---- Reset mínimo ---------------------------------------------------- */
+
+/* El ancho de una caja incluye su padding y su borde: las cuentas cuadran. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Quitamos los márgenes por defecto: el espaciado lo decide layout.css. */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+fieldset {
+  margin: 0;
+}
+
+/* Los formularios del navegador y las barras de desplazamiento siguen al tema. */
+:root {
+  color-scheme: light dark;
+}
+
+/* ---- Página ----------------------------------------------------------- */
+
+body {
+  background-color: var(--ui-fondo);
+  color: var(--ui-texto);
+  font-family: var(--fuente-texto);
+  font-size: var(--tam-base);
+  line-height: var(--interlineado);
+  /* Evita que el móvil agrande el texto por su cuenta al girar la pantalla. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* ---- Tipografía ------------------------------------------------------- */
+
+h1,
+h2,
+h3 {
+  color: var(--ui-titulo);
+  font-family: var(--fuente-titulos);
+  font-weight: var(--peso-normal);
+  line-height: var(--interlineado-titulo);
+  /* Reparte las palabras entre líneas para no dejar una sola al final. */
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--tam-xl);
+}
+
+h2 {
+  font-size: var(--tam-lg);
+}
+
+h3 {
+  font-size: var(--tam-md);
+}
+
+/* Líneas de texto de una longitud cómoda de leer. */
+p,
+li,
+dd {
+  max-width: var(--ancho-lectura);
+}
+
+strong,
+dt {
+  font-weight: var(--peso-negrita);
+}
+
+/* ---- Enlaces ---------------------------------------------------------- */
+
+a {
+  color: var(--ui-enlace);
+  text-decoration-thickness: var(--borde-fino);
+  text-underline-offset: var(--espacio-1);
+}
+
+a:hover {
+  text-decoration-thickness: var(--borde-grueso);
+}
+
+/* Foco visible para teclado (V04). :focus-visible no lo muestra al hacer clic. */
+:focus-visible {
+  outline: var(--borde-grueso) solid var(--ui-foco);
+  outline-offset: var(--borde-grueso);
+}
+
+/* main recibe el foco desde «Saltar al contenido»; no necesita contorno. */
+main:focus {
+  outline: none;
+}
+
+/* ---- Imágenes y multimedia ------------------------------------------- */
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---- Formularios: heredan la letra de la página ---------------------- */
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* Un control nunca más ancho que su contenedor (un select con opciones largas
+   desbordaba 90 px a 360 px: bug B01). */
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+/* ---- Movimiento reducido (RF10) -------------------------------------- */
+
+/* Si la persona pide menos movimiento, se anulan animaciones y transiciones. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s;
+    transition-duration: 0s;
+    scroll-behavior: auto;
+  }
+}

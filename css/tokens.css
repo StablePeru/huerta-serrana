@@ -85,9 +85,10 @@
   /* ---- 6. Maquetación ------------------------------------------------- */
   --ancho-max: 72rem; /* 1152 px: contenedor en escritorio */
   --ancho-lectura: 65ch; /* Línea de texto cómoda */
-  --tarjeta-min: 16rem; /* Ancho mínimo de tarjeta en la rejilla */
+  --tarjeta-min: min(100%, 16rem); /* Ancho mínimo de tarjeta (o todo el ancho si no cabe) */
   --objetivo-tactil: 2.75rem; /* 44 px: tamaño mínimo de botones y enlaces */
   --duracion: 200ms;
+  --capa-menu: 10; /* El menú desplegable queda por encima del contenido */
 
   /* Breakpoints (no pueden ser variables dentro de @media, se documentan):
      48em = 768 px · 80em = 1280 px */
