@@ -89,6 +89,7 @@
   --objetivo-tactil: 2.75rem; /* 44 px: tamaño mínimo de botones y enlaces */
   --duracion: 200ms;
   --capa-menu: 10; /* El menú desplegable queda por encima del contenido */
+  --tabla-min: 40rem; /* Ancho mínimo de la tabla de cestas antes de desplazarse */
 
   /* Breakpoints (no pueden ser variables dentro de @media, se documentan):
      48em = 768 px · 80em = 1280 px */

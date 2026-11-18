@@ -1,0 +1,54 @@
+/* ==========================================================================
+   components.css · Componentes reutilizables (BEM)
+   --------------------------------------------------------------------------
+   Un bloque por componente: .bloque, .bloque__elemento, .bloque--variante.
+   Solo usan roles (--ui-*) y escalas de tokens.css.
+   ========================================================================== */
+
+/* ---- Botón ------------------------------------------------------------
+   Llamada a la acción. Verde (principal) o Tierra (--secundario). */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--objetivo-tactil);
+  padding-inline: var(--espacio-5);
+  border: 0;
+  border-radius: var(--radio-sm);
+  background-color: var(--ui-boton-fondo);
+  color: var(--ui-boton-texto);
+  font-weight: var(--peso-negrita);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duracion);
+}
+
+/* Al pasar el ratón se oscurece a Tinta (en modo oscuro, se aclara a Crema). */
+.boton:hover {
+  background-color: var(--ui-texto);
+  color: var(--ui-fondo);
+}
+
+.boton--secundario {
+  background-color: var(--ui-boton2-fondo);
+  color: var(--ui-boton2-texto);
+}
+
+/* ---- Enlace con flecha ------------------------------------------------
+   Acción de menor peso que un botón: «Ver catálogo →». */
+.enlace-flecha {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  min-height: var(--objetivo-tactil);
+  font-weight: var(--peso-negrita);
+}
+
+.enlace-flecha::after {
+  content: "→";
+  transition: transform var(--duracion);
+}
+
+.enlace-flecha:hover::after {
+  transform: translateX(var(--espacio-1));
+}
