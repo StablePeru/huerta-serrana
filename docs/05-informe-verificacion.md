@@ -43,3 +43,16 @@ Otras comprobaciones:
 - **Pendiente de explicar:** Lighthouse marca `bf-cache` porque el servidor de pruebas envía `Cache-Control: no-store` (opción `-c-1`). Se repetirá en el sitio publicado.
 
 Capturas: `docs/capturas/inicio-1280.png`, `inicio-360-oscuro.png`, `catalogo-1280.png`, `catalogo-impresion.png`, `productores-1280.png`, `contacto-360.png`.
+
+## Medidas de la versión v1.0 (2026-11-18, local)
+
+| Página | Rend. / A11y / BP / SEO | Peso | Peticiones | Externas | CLS |
+|---|---|---|---|---|---|
+| index.html | 100 / 100 / 100 / 100 | 46 KB | 7 | 0 | 0 |
+| catalogo.html | 100 / 100 / 100 / 100 | 49 KB | 7 | 0 | 0 |
+| productores.html | 100 / 100 / 100 / 100 | 43 KB | 7 | 0 | 0 |
+| contacto.html | 100 / 100 / 100 / 100 | 47 KB | 7 | 0 | 0 |
+
+W3C: 0 errores y 0 avisos en las 4 páginas y en las 4 hojas CSS. Auditoría CSS:
+0 colores o espaciados sueltos, 0 `!important`, 0 IDs para estilar, 0 `float`.
+Pendiente: repetir V08-V12 en el sitio publicado y en un móvil real (apartado 6.1).
