@@ -142,3 +142,30 @@
   color: var(--ui-destacado-texto);
   font-weight: var(--peso-negrita);
 }
+
+/* ---- Pasos de «Cómo funciona» -------------------------------------------
+   La lista ordenada ya numera para lectores de pantalla; el número grande
+   se dibuja con un contador CSS. */
+.pasos__lista {
+  counter-reset: paso;
+}
+
+.pasos__paso {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--espacio-4);
+  counter-increment: paso;
+}
+
+.pasos__paso::before {
+  content: counter(paso);
+  grid-row: span 2;
+  color: var(--ui-titulo);
+  font-family: var(--fuente-titulos);
+  font-size: var(--tam-xl);
+  line-height: var(--interlineado-titulo);
+}
+
+.pasos__titulo {
+  font-size: var(--tam-md);
+}
