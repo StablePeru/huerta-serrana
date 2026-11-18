@@ -40,7 +40,7 @@ Otras comprobaciones:
 - **Aviso de temporada (JS):** probado simulando enero, abril, julio y octubre: título, meses resaltados y productos correctos en las 4 estaciones.
 - **Formulario (JS):** vacío no se envía (nombre, correo, pedido y consentimiento marcados como inválidos); con datos válidos compone `mailto:` con asunto y una línea por dato.
 - **Impresión:** captura `docs/capturas/catalogo-impresion.png`.
-- **Pendiente de explicar:** Lighthouse marca `bf-cache` porque el servidor de pruebas envía `Cache-Control: no-store` (opción `-c-1`). Se repetirá en el sitio publicado.
+- **`bf-cache`:** en local Lighthouse lo marcaba porque el servidor de pruebas envía `Cache-Control: no-store` (opción `-c-1`). En el sitio publicado pasa en las 4 páginas: no era un fallo del sitio.
 
 Capturas: `docs/capturas/inicio-1280.png`, `inicio-360-oscuro.png`, `catalogo-1280.png`, `catalogo-impresion.png`, `productores-1280.png`, `contacto-360.png`.
 
@@ -55,4 +55,24 @@ Capturas: `docs/capturas/inicio-1280.png`, `inicio-360-oscuro.png`, `catalogo-12
 
 W3C: 0 errores y 0 avisos en las 4 páginas y en las 4 hojas CSS. Auditoría CSS:
 0 colores o espaciados sueltos, 0 `!important`, 0 IDs para estilar, 0 `float`.
-Pendiente: repetir V08-V12 en el sitio publicado y en un móvil real (apartado 6.1).
+## Medidas del sitio publicado (2026-11-18, GitHub Pages, Lighthouse 13.6 móvil, tras B08)
+
+URL: https://stableperu.github.io/huerta-serrana/
+
+| Página | Rend. / A11y / BP / SEO | Transferido | Peticiones | LCP | CLS | bf-cache |
+|---|---|---|---|---|---|---|
+| index.html | 100 / 100 / 100 / 100 | 16 KB | 7 | 1,0 s | 0 | Sí |
+| catalogo.html | 100 / 100 / 100 / 100 | 16 KB | 7 | 1,0 s | 0 | Sí |
+| productores.html | 100 / 100 / 100 / 100 | 16 KB | 7 | 0,8 s | 0 | Sí |
+| contacto.html | 100 / 100 / 100 / 100 | 17 KB | 7 | 1,0 s | 0 | Sí |
+
+El peso transferido es menor que en local (43-49 KB) porque GitHub Pages
+comprime con gzip; el servidor de pruebas no.
+
+Antes de B08, contacto.html daba 100 / 100 / 77 / 100 en el sitio publicado.
+
+Caso límite conocido: si el script del `<head>` se ejecuta pero `js/main.js` no
+llega a cargar, el formulario se ve pero no abre el correo. El correo de
+contacto sigue visible en «Contacto directo» y en el pie.
+
+Pendiente: repetir V08-V12 en un móvil real (apartado 6.1).
