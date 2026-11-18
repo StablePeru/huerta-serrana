@@ -380,3 +380,49 @@ textarea.formulario__control {
   margin: var(--espacio-1) 0 0;
   accent-color: var(--ui-boton-fondo);
 }
+
+/* ---- Tabla comparativa (RF7) --------------------------------------------
+   La tabla sigue siendo tabla en móvil: se desliza dentro de su caja y la
+   página no hace scroll horizontal (B02). La caja recibe el foco
+   (tabindex="0") para poder deslizarla con las flechas del teclado. */
+.tabla-contenedor {
+  overflow-x: auto;
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-md);
+}
+
+.tabla-ayuda {
+  font-size: var(--tam-sm);
+}
+
+.tabla {
+  width: 100%;
+  min-width: var(--tabla-min);
+  border-collapse: collapse;
+  font-size: var(--tam-sm);
+}
+
+.tabla__titulo {
+  padding: var(--espacio-3);
+  font-weight: var(--peso-negrita);
+  text-align: start;
+}
+
+.tabla th,
+.tabla td {
+  padding: var(--espacio-3);
+  border-block-start: var(--borde-fino) solid var(--ui-borde);
+  text-align: start;
+  vertical-align: top;
+}
+
+.tabla thead th {
+  background-color: var(--ui-superficie);
+}
+
+/* Nombre de la cesta (cabecera de fila) */
+.tabla tbody th {
+  color: var(--ui-titulo);
+  font-family: var(--fuente-titulos);
+  font-weight: var(--peso-normal);
+}
