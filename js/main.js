@@ -41,3 +41,30 @@ function actualizarAvisoTemporada() {
 }
 
 actualizarAvisoTemporada();
+
+/* ---- 2. Contador accesible del filtro (catalogo.html) ------------------
+   El filtro ya funciona solo con CSS (:has). Lo que CSS no puede hacer es
+   avisar a un lector de pantalla de cuántos productos quedan: lo hace un
+   párrafo con role="status", que se lee en voz alta al cambiar. */
+function anunciarResultadosFiltro() {
+  const catalogo = document.querySelector(".catalogo");
+  if (!catalogo) return;
+
+  const filtro = catalogo.querySelector(".filtro");
+  const productos = [...catalogo.querySelectorAll(".catalogo__item")];
+
+  const estado = document.createElement("p");
+  estado.className = "filtro__estado";
+  estado.setAttribute("role", "status");
+  filtro.after(estado);
+
+  const contarVisibles = () => {
+    const visibles = productos.filter((producto) => getComputedStyle(producto).display !== "none");
+    estado.textContent = `Mostrando ${visibles.length} de ${productos.length} productos.`;
+  };
+
+  filtro.addEventListener("change", contarVisibles);
+  contarVisibles();
+}
+
+anunciarResultadosFiltro();

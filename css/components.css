@@ -517,3 +517,8 @@ textarea.formulario__control {
     display: none;
   }
 }
+
+/* Contador del filtro: lo crea main.js (sin JS no existe) */
+.filtro__estado {
+  font-size: var(--tam-sm);
+}
