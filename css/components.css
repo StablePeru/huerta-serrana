@@ -169,3 +169,70 @@
 .pasos__titulo {
   font-size: var(--tam-md);
 }
+
+/* ---- Etiqueta de precio -------------------------------------------------
+   Tarjeta Arena con forma de etiqueta de mercado: el precio, grande y a la
+   derecha, es lo primero que se ve (objetivo O1). Se usa para cestas y
+   productos. Texto Tinta sobre Arena: 11,50:1; título Verde: 5,91:1. */
+.etiqueta {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: start;
+  gap: var(--espacio-2) var(--espacio-3);
+  height: 100%;
+  padding: var(--espacio-4) var(--espacio-4) var(--espacio-4) var(--espacio-6);
+  background-color: var(--ui-superficie);
+  border-radius: var(--radio-md);
+}
+
+/* El agujero de la etiqueta (decorativo) */
+.etiqueta::before {
+  content: "";
+  position: absolute;
+  top: var(--espacio-5);
+  left: var(--espacio-3);
+  width: var(--espacio-3);
+  height: var(--espacio-3);
+  background-color: var(--ui-fondo);
+  border: var(--borde-fino) solid var(--ui-borde);
+  border-radius: var(--radio-pildora);
+}
+
+.etiqueta__nombre {
+  font-size: var(--tam-md);
+}
+
+.etiqueta__precio {
+  font-family: var(--fuente-titulos);
+  font-size: var(--tam-lg);
+  font-weight: var(--peso-negrita);
+  line-height: var(--interlineado-titulo);
+  text-align: end;
+  white-space: nowrap;
+}
+
+.etiqueta__unidad {
+  display: block;
+  font-family: var(--fuente-texto);
+  font-size: var(--tam-sm);
+  font-weight: var(--peso-normal);
+}
+
+.etiqueta__datos {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--espacio-1) var(--espacio-3);
+  font-size: var(--tam-sm);
+}
+
+/* Píldora de alérgenos: solo aparece si el producto los tiene */
+.etiqueta__alergenos {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding-inline: var(--espacio-2);
+  border: var(--borde-fino) solid var(--ui-texto);
+  border-radius: var(--radio-pildora);
+  font-size: var(--tam-sm);
+}
