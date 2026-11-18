@@ -152,7 +152,7 @@
 
 .pasos__paso {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: var(--espacio-6) 1fr; /* Ancho fijo: «1» y «2» miden distinto (B04) */
   column-gap: var(--espacio-4);
   counter-increment: paso;
 }
