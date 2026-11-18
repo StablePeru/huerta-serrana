@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contacto y pedido · Huerta Serrana</title>
+    <meta name="description" content="Solicita una cesta o un pedido a Huerta Serrana con 48 horas de antelación. Compara las tres cestas y resuelve tus dudas frecuentes.">
+    <link rel="stylesheet" href="css/tokens.css">
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+    <header class="cabecera">
+      <a class="cabecera__logo" href="index.html">Huerta Serrana</a>
+      <details class="menu">
+        <summary class="menu__boton">Menú</summary>
+        <nav class="menu__nav" aria-label="Principal">
+          <ul class="menu__lista">
+            <li><a class="menu__enlace" href="index.html">Inicio</a></li>
+            <li><a class="menu__enlace" href="catalogo.html">Catálogo</a></li>
+            <li><a class="menu__enlace" href="productores.html">Productores</a></li>
+            <li><a class="menu__enlace" href="contacto.html" aria-current="page">Contacto y pedido</a></li>
+          </ul>
+        </nav>
+      </details>
+    </header>
+
+    <main id="contenido" tabindex="-1">
+      <h1>Contacto y pedido</h1>
+      <p>
+        Pide con 48 horas de antelación. Repartimos los jueves y los sábados en Madrid capital
+        y en los municipios de la sierra. No hacemos envíos a toda España.
+      </p>
+
+      <section class="pedido" id="pedido" aria-labelledby="pedido-titulo">
+        <h2 id="pedido-titulo">Solicita tu pedido</h2>
+        <p>
+          Al enviar se abrirá tu programa de correo con la solicitud lista para mandar a
+          pedidos@huertaserrana.example. Los campos marcados como opcionales puedes dejarlos vacíos.
+        </p>
+
+        <form class="formulario" action="mailto:pedidos@huertaserrana.example" method="post" enctype="text/plain">
+          <p class="formulario__campo">
+            <label class="formulario__etiqueta" for="nombre">Nombre</label>
+            <input class="formulario__control" id="nombre" name="nombre" type="text" autocomplete="name" required>
+          </p>
+          <p class="formulario__campo">
+            <label class="formulario__etiqueta" for="correo">Correo electrónico</label>
+            <input class="formulario__control" id="correo" name="correo" type="email" autocomplete="email" required>
+          </p>
+          <p class="formulario__campo">
+            <label class="formulario__etiqueta" for="telefono">Teléfono (opcional)</label>
+            <input class="formulario__control" id="telefono" name="telefono" type="tel" autocomplete="tel">
+          </p>
+          <p class="formulario__campo">
+            <label class="formulario__etiqueta" for="cesta">¿Qué quieres pedir?</label>
+            <select class="formulario__control" id="cesta" name="pedido" required>
+              <option value="">Elige una opción</option>
+              <option>Cesta Pareja · 38 € al mes · semanal</option>
+              <option>Cesta Familia · 62 € al mes · semanal</option>
+              <option>Cesta Despensa · 45 € al mes · quincenal</option>
+              <option>Productos sueltos del catálogo (detállalos en comentarios)</option>
+            </select>
+          </p>
+          <p class="formulario__campo">
+            <label class="formulario__etiqueta" for="comentarios">Comentarios (opcional)</label>
+            <textarea class="formulario__control" id="comentarios" name="comentarios" rows="4"></textarea>
+          </p>
+          <p class="formulario__campo formulario__campo--casilla">
+            <input class="formulario__casilla" id="consentimiento" name="consentimiento" type="checkbox" value="acepto" required>
+            <label for="consentimiento">
+              Acepto que Huerta Serrana S. Coop. trate mis datos para atender esta solicitud,
+              según el <a href="#privacidad">aviso de privacidad</a>.
+            </label>
+          </p>
+          <p class="formulario__acciones">
+            <button class="boton" type="submit">Enviar solicitud</button>
+          </p>
+        </form>
+      </section>
+
+      <section class="comparativa" id="comparar" aria-labelledby="comparar-titulo">
+        <h2 id="comparar-titulo">Compara las cestas</h2>
+        <div class="tabla-contenedor">
+          <table class="tabla">
+            <caption class="tabla__titulo">Precio, personas, contenido y frecuencia de entrega de cada cesta</caption>
+            <thead>
+              <tr>
+                <th scope="col">Cesta</th>
+                <th scope="col">Precio al mes</th>
+                <th scope="col">Personas</th>
+                <th scope="col">Contenido</th>
+                <th scope="col">Entrega</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Cesta Pareja</th>
+                <td><data value="38">38 €</data></td>
+                <td>1-2</td>
+                <td>Verdura y fruta de temporada, 1 pan, 1 huevos</td>
+                <td>Semanal</td>
+              </tr>
+              <tr>
+                <th scope="row">Cesta Familia</th>
+                <td><data value="62">62 €</data></td>
+                <td>3-4</td>
+                <td>Verdura y fruta de temporada, 2 panes, 1 docena de huevos, 1 queso o yogures</td>
+                <td>Semanal</td>
+              </tr>
+              <tr>
+                <th scope="row">Cesta Despensa</th>
+                <td><data value="45">45 €</data></td>
+                <td>2-4</td>
+                <td>Miel, mermelada, queso curado, magdalenas y 1 pan</td>
+                <td>Quincenal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="preguntas" aria-labelledby="preguntas-titulo">
+        <h2 id="preguntas-titulo">Preguntas frecuentes</h2>
+        <details class="pregunta">
+          <summary class="pregunta__titulo">¿Qué días repartís?</summary>
+          <p>Los jueves y los sábados.</p>
+        </details>
+        <details class="pregunta">
+          <summary class="pregunta__titulo">¿Con cuánta antelación tengo que pedir?</summary>
+          <p>Con un mínimo de 48 horas.</p>
+        </details>
+        <details class="pregunta">
+          <summary class="pregunta__titulo">¿Enviáis a toda España?</summary>
+          <p>No. Repartimos en Madrid capital y en los municipios de la sierra.</p>
+        </details>
+        <details class="pregunta">
+          <summary class="pregunta__titulo">¿Qué hacéis con mis datos?</summary>
+          <p>
+            Solo los usamos para atender tu solicitud de pedido o información. No los cedemos a
+            terceros y esta web no usa cookies.
+          </p>
+        </details>
+        <details class="pregunta">
+          <summary class="pregunta__titulo">¿Cómo puedo borrar o corregir mis datos?</summary>
+          <p>
+            Escríbenos a pedidos@huertaserrana.example. Puedes ejercer los derechos de acceso,
+            rectificación, supresión, oposición, limitación y portabilidad.
+          </p>
+        </details>
+      </section>
+
+      <section class="contacto" aria-labelledby="contacto-titulo">
+        <h2 id="contacto-titulo">Contacto directo</h2>
+        <address class="contacto__datos">
+          Correo: <a href="mailto:pedidos@huertaserrana.example">pedidos@huertaserrana.example</a><br>
+          Teléfono: <a href="tel:+34910000000">910 000 000</a>
+        </address>
+      </section>
+    </main>
+
+    <footer class="pie">
+      <section class="pie__bloque" id="privacidad" aria-labelledby="privacidad-titulo">
+        <h2 class="pie__titulo" id="privacidad-titulo">Aviso legal y privacidad</h2>
+        <dl class="pie__datos">
+          <dt>Responsable</dt>
+          <dd>Huerta Serrana S. Coop.</dd>
+          <dt>Finalidad</dt>
+          <dd>Atender solicitudes de pedido o información.</dd>
+          <dt>Base jurídica</dt>
+          <dd>Consentimiento de la persona.</dd>
+          <dt>Conservación</dt>
+          <dd>Hasta resolver la solicitud y los plazos legales.</dd>
+          <dt>Derechos</dt>
+          <dd>Acceso, rectificación, supresión, oposición, limitación y portabilidad, escribiendo a pedidos@huertaserrana.example.</dd>
+        </dl>
+        <p>No se ceden datos a terceros ni se usan cookies.</p>
+      </section>
+      <section class="pie__bloque" aria-labelledby="pie-contacto-titulo">
+        <h2 class="pie__titulo" id="pie-contacto-titulo">Contacto</h2>
+        <p>
+          <a href="mailto:pedidos@huertaserrana.example">pedidos@huertaserrana.example</a><br>
+          <a href="tel:+34910000000">910 000 000</a>
+        </p>
+        <p class="pie__nota">Sitio ficticio creado para un caso práctico de Ingeniería Web I (UAX, 2026-27).</p>
+      </section>
+    </footer>
+  </body>
+</html>
