@@ -90,6 +90,7 @@
   --duracion: 200ms;
   --capa-menu: 10; /* El menú desplegable queda por encima del contenido */
   --tabla-min: 40rem; /* Ancho mínimo de la tabla de cestas antes de desplazarse */
+  --ancho-aside: 18rem; /* Columna lateral de Productores en escritorio */
 
   /* Breakpoints (no pueden ser variables dentro de @media, se documentan):
      48em = 768 px · 80em = 1280 px */

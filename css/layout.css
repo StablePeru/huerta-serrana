@@ -206,7 +206,7 @@ section > * + * {
     .menu__nav {
       position: static;
       padding: 0;
-      background-color: transparent;
+      background: none;
       border: 0;
       box-shadow: none;
     }
@@ -215,5 +215,45 @@ section > * + * {
       display: flex;
       gap: var(--espacio-5);
     }
+  }
+}
+
+/* ---- Rejillas de tableta (≥ 768 px) ------------------------------------ */
+@media (min-width: 48em) {
+  main {
+    padding-block: var(--espacio-7) var(--espacio-8);
+  }
+
+  main > :is(section, aside, div) {
+    margin-block-start: var(--espacio-8);
+  }
+
+  .pasos__lista,
+  .cestas__lista {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .productores__fichas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pie {
+    grid-template-columns: 2fr 1fr;
+    column-gap: var(--espacio-7);
+  }
+}
+
+/* ---- Escritorio (≥ 1280 px) --------------------------------------------
+   Productores: fichas a la izquierda y el aside de datos como columna
+   lateral que acompaña al desplazarse. */
+@media (min-width: 80em) {
+  .productores {
+    grid-template-columns: 1fr var(--ancho-aside);
+    align-items: start;
+  }
+
+  .datos {
+    position: sticky;
+    top: var(--espacio-5);
   }
 }
